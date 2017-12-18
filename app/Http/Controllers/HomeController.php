@@ -68,6 +68,7 @@ class HomeController extends Controller
     //详细页
     public function getBook(Request $request, $fiction_id)
     {
+ 
         //分类
         $category = FictionsCategory::getCategorys();
 
@@ -77,13 +78,12 @@ class HomeController extends Controller
         $fiction = Fictions::getFiction(['id'=>$fiction_id]);
         if(empty($fiction))
             die("找不到小说");
-
         //查找章节
         $fiction['catalog'] = FictionsCatalog::getCatalogs(['fiction_id'=>$fiction->id], ['updated_at', 'asc']);
         $fiction['category_name'] = $category[$fiction['category_id']];
 
-        $count = count($fiction['catalog']);
-        for($i=($count-1) ; $i>($count-10) ; $i--){
+        $count = count($fiction['catalog']) ;
+        for($i=($count-1) ; $i>($count>=10 ? $count-10 : 0) ; $i--){
             $newcatalog[] = $fiction['catalog'][$i];
         }
         $fiction['newcatalog'] = $newcatalog;
