@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', 'HomeController@getIndex');
 
 Route::get('/book/{fiction_id}', 'HomeController@getBook');
