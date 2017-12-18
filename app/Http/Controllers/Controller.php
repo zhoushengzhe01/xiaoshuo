@@ -15,6 +15,8 @@ use App\Model\WebsiteDomain;
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+    
+    protected static $website;
 
     public function __construct()
     {
@@ -30,12 +32,16 @@ class Controller extends BaseController
         if(empty($domain))
             die('没有这个域名');
 
-        $website = Website::getWebsite(['id'=>$domain->website_id]);
-        if(empty($website))
+        self::$website = Website::getWebsite(['id'=>$domain->website_id]);
+        if(empty(self::$website))
             die('找不到网站信息');
         
-        if($website->state==0)
+        if(self::$website->state==0)
             die('网站处于关闭状态');
+
         
+        self::$website->domain = $domain->name;
+        self::$website->site = 'http://'.$domain->name;
+        self::$website->public = self::$website->site.'/dome01';
     }
 }

@@ -16,7 +16,7 @@ Route::get('/book/{fiction_id}', 'HomeController@getBook');
 Route::get('/book/{fiction_id}/{catalog_id}', 'HomeController@getRead');
 Route::get('/list/{category_id}', 'ListController@getList');
 Route::get('/ranking/{category_id}', 'ListController@getRanking');
-Route::get('/search/{category_id}', 'ListController@getSearch');
+Route::get('/search', 'ListController@getSearch');
 
 //登陆注册
 Route::get('/logout', 'Member\AuthController@getLogout');
