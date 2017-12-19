@@ -35,6 +35,7 @@
 	<!--导航-->
 	<div class="nav">
 		<ul>
+			<?php $category = App\Model\FictionsCategory::getCategorys(); ?>
 			<li><a href="{{$website->site}}">首页</a></li>
 			@foreach ($category as $val)
 			<li><a href="{{$website->site}}/list/{{$val->id}}">{{$val->name}}小说</a></li>
@@ -47,7 +48,8 @@
 	
 	<div class="submenu">
 		<div class="left">
-			@foreach ($index_fictions as $key=>$val)
+			<?php $result = App\Model\Fictions::getFictions(['is_index'=>1], ['updated_at', 'desc'], 0, 5); ?>
+			@foreach ($result as $key=>$val)
 			<div id="ft{{$key+1}}" class="left1" @if ($key > 0) style="display:none" @endif>
 				<p class="pic"><a href="{{$website->site}}/book/{{$val->id}}"><img src="{{$website->public}}/images/5s.jpg" width="220" height="275"/></a></p>
 				<div class="pp">
@@ -62,7 +64,7 @@
 			@endforeach
 			<div class="list">
 				<ul>
-					@foreach ($index_fictions as $key=>$val)
+					@foreach ($result as $key=>$val)
 					<li><a href="javascript:;" onmouseover="showone('{{$key+1}}');"><img src="{{$website->public}}/images/5s.jpg" width="85" height="115" alt="{{$val->name}}" /></a></li>
 					@endforeach
 					<div class="clear"></div>
@@ -71,7 +73,13 @@
 		</div>
 
 		<div class="right">
-			@foreach ($recommend_fictions as $key=>$val)
+			<?php
+				$result = [];
+        		foreach([3,4,5] as $k=>$v){
+					$result[$k] = App\Model\Fictions::getFictions(['is_recommend'=>1, 'category_id'=>$v], ['updated_at', 'desc'], 0, 7);
+				}
+			?>
+			@foreach ($result as $key=>$val)
 			<div class="list1">
 				<h3><a href="{{$website->site}}/book/{{$val[0]->id}}">{{$val[0]->title}}</a> / <span class="author">{{$val[0]->author}}</span></h3>
 				<ul>
@@ -93,7 +101,8 @@
 			<h3><a href="/paihang/allvisit_1.html">排行榜</a></h3>
 			<div class="gengduo"><a href="/paihang/allvisit_1.html">更多</a></div>
 			<ul>
-				@foreach ($click_fictions as $key=>$val)
+				<?php $result = App\Model\Fictions::getFictions([], ['all_click', 'desc'], 0, 10); ?>
+				@foreach ($result as $key=>$val)
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
@@ -107,7 +116,8 @@
             <h3><a href="ranking.html">推荐排行</a></h3>
             <div class="gengduo"><a href="ranking.html">更多</a></div>
             <ul>
-				@foreach ($recomm_fictions as $key=>$val)
+				<?php $result = App\Model\Fictions::getFictions([], ['all_recommend', 'desc'], 0, 10); ?>
+				@foreach ($result as $key=>$val)
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
@@ -121,7 +131,8 @@
 			<h3><a href="list.html">完结小说</a></h3>
 			<div class="gengduo"><a href="list.html">更多</a></div>
 			<ul>
-				@foreach ($state_fictions as $key=>$val)
+				<?php $result = App\Model\Fictions::getFictions(['state'=>2], ['updated_at', 'desc'], 0, 10); ?>
+				@foreach ($result as $key=>$val)
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
@@ -136,7 +147,8 @@
 			<h3><a href="ranking.html">收藏榜</a></h3>
 			<div class="gengduo"><a href="ranking.html">更多</a></div>
 			<ul>
-				@foreach ($collect_fictions as $key=>$val)
+				<?php $result = App\Model\Fictions::getFictions([], ['all_collect', 'desc'], 0, 10); ?>
+				@foreach ($result as $key=>$val)
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
@@ -150,7 +162,14 @@
 	</div>
     <div class="clear"></div>
 	<div class="submenu2">
-		@foreach ($category_fictions as $key=>$val)
+	
+		<?php
+		$result = [];
+		foreach($category as $k=>$v){
+			$result[$k] = $v; $result[$k]['list'] = App\Model\Fictions::getFictions(['category_id'=>$v->id], ['updated_at', 'desc'], 0, 10);
+		}
+		?>
+		@foreach ($result as $key=>$val)
 		<div class="list @if (($key+1)%4==0) list2 @endif">
 			<h3><a href="{{$website->site}}/list/{{$val->id}}">{{$val->name}}小说  </a></h3>
 			<div class="gengduo"><a href="{{$website->site}}/list/{{$val->id}}">更多</a></div>

@@ -38,10 +38,40 @@ class Controller extends BaseController
         
         if(self::$website->state==0)
             die('网站处于关闭状态');
-
         
         self::$website->domain = $domain->name;
         self::$website->site = 'http://'.$domain->name;
         self::$website->public = self::$website->site.'/dome01';
+    }
+
+    //提示页面
+    public static function success($message='操作成功', $url='-1')
+    {
+        $data = [
+            'website'=>self::$website,
+            'message'=>$message,
+            'url'=>$url,
+        ];
+        return view('success', $data);
+    }
+
+    public static function error($message='操作失败', $url='-1')
+    {
+        $data = [
+            'website'=>self::$website,
+            'message'=>$message,
+            'url'=>$url,
+        ];
+        return view('error', $data);
+    }
+
+    public static function info($message='操作失败', $url='-1')
+    {
+        $data = [
+            'website'=>self::$website,
+            'message'=>$message,
+            'url'=>$url,
+        ];
+        return view('info', $data);
     }
 }

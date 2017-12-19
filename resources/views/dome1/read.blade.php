@@ -35,6 +35,7 @@
 	<!--导航-->
 	<div class="nav">
 		<ul>
+			<?php $category = App\Model\FictionsCategory::getCategorys(); ?>
 			<li><a href="{{$website->site}}">首页</a></li>
 			@foreach ($category as $val)
 			<li><a href="{{$website->site}}/list/{{$val->id}}">{{$val->name}}小说</a></li>
@@ -49,17 +50,25 @@
 		<div class="nr_input">
 			<p class="nrset"><a href="#">加入书架</a></p>
 			<p class="nrset"><a href="#">设置背景</a></p>
-			<p class="nrset"><a href="#">上一章</a></p>
-			<p class="nrset"><a href="#">返回目录</a></p>
-			<p class="nrset"><a href="#">下一章</a></p>
+			@if ($upper_catalog)
+			<p class="nrset"><a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$upper_catalog->id}}">上一章</a></p>
+			@endif
+			<p class="nrset"><a href="{{$website->site}}/book/{{$catalog->fiction_id}}">返回目录</a></p>
+			@if ($next_catalog)
+			<p class="nrset"><a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$next_catalog->id}}">下一章</a></p>
+			@endif
 		</div>
 		<div id="nr_content" class="nr_content">
-			<div class="nr_title"><h3>第一卷 我 第三章 晋升外宗</h3><span class="articletitle"> 作品:《<a href="read.html">我欲封天</a>》</span></div>
+			<div class="nr_title"><h3>{{$catalog->title}}</h3><span class="articletitle"> 作品:《<a href="{{$website->site}}/book/{{$catalog->fiction_id}}">{{$fiction->title}}</a>》</span></div>
             <div class="nr_page">
-                <a href="#">上一章</a>
-                <a href="#">返回目录</a>
+				@if ($upper_catalog)
+                <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$upper_catalog->id}}">上一章</a>
+				@endif
+				<a href="{{$website->site}}/book/{{$catalog->fiction_id}}">返回目录</a>
                 <a href="#">加入书签</a>
-                <a href="#">下一章</a>
+				@if ($next_catalog)
+                <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$next_catalog->id}}">下一章</a>
+				@endif
             </div>
 			<p class="backpic"></p>
 			<div class="novelcontent">
@@ -67,10 +76,14 @@
 			</div>
             <p class="backpic"></p>
             <div class="nr_page">
-                <a href="#">上一章</a>
-                <a href="#">返回目录</a>
+                @if ($upper_catalog)
+                <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$upper_catalog->id}}">上一章</a>
+				@endif
+				<a href="{{$website->site}}/book/{{$catalog->fiction_id}}">返回目录</a>
                 <a href="#">加入书签</a>
-                <a href="#">下一章</a>
+				@if ($next_catalog)
+                <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$next_catalog->id}}">下一章</a>
+				@endif
             </div>
 		</div>
 	</div>

@@ -21,9 +21,21 @@ use App\Model\WebsiteDomain;
 class ListController extends Controller
 {
     //分类
-    public function getList(Request $request)
+    public function getList(Request $request, $category_id)
     {
-        die("首页");
+        $category_id = intval($category_id);
+        if(empty($category_id))
+        {
+            return self::error('错误入口');
+        }
+        
+
+        $data = [
+            'website'=>self::$website,
+            'user'=>[],
+        ];
+
+        return view('dome1.list', $data);
     }
 
     //排行

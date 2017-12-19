@@ -24,75 +24,39 @@ class HomeController extends Controller
     //首页
     public function getIndex(Request $request)
     {
-        //分类
-        $category = FictionsCategory::getCategorys();
-
-        //首页小说
-        $index_fictions = Fictions::getFictions(['is_index'=>1], ['updated_at', 'desc'], 0, 5);
-
-        //推荐小说
-        $cat = [3,4,5];
-        foreach($cat as $k=>$v){
-            $recommend_fictions[$k] = Fictions::getFictions(['is_recommend'=>1, 'category_id'=>$v], ['updated_at', 'desc'], 0, 7);
-        }
-
-        //排行榜
-        $click_fictions = Fictions::getFictions([], ['all_click', 'desc'], 0, 10);
-        $recomm_fictions = Fictions::getFictions([], ['all_recommend', 'desc'], 0, 10);
-        $collect_fictions = Fictions::getFictions([], ['all_collect', 'desc'], 0, 10);
-        $state_fictions = Fictions::getFictions(['state'=>2], ['updated_at', 'desc'], 0, 10);
-        
-        //查找分类漫画
-        foreach($category as $k=>$v){
-            $category_fictions[$k] = $v;
-            $category_fictions[$k]['list'] = Fictions::getFictions(['category_id'=>$v->id], ['updated_at', 'desc'], 0, 10);
-        }
-
-        //数据
         $data = [
             'website'=>self::$website,
             'user'=>[],
-            'category'=>$category,
-            'index_fictions'=>$index_fictions,
-            'recommend_fictions'=>$recommend_fictions,
-            'click_fictions'=>$click_fictions,
-            'recomm_fictions'=>$recomm_fictions,
-            'collect_fictions'=>$collect_fictions,
-            'state_fictions'=>$state_fictions,
-            'category_fictions' => $category_fictions,
+            
         ];
-
         return view('dome1.home', $data);
     }
 
     //详细页
     public function getBook(Request $request, $fiction_id)
     {
- 
-        //分类
-        $category = FictionsCategory::getCategorys();
-
+        $fiction_id = intval($fiction_id);
         if(empty($fiction_id))
-            die("错误入口");
+        {
+            return self::error('错误入口');
+        }
         
         $fiction = Fictions::getFiction(['id'=>$fiction_id]);
         if(empty($fiction))
-            die("找不到小说");
-        //查找章节
-        $fiction['catalog'] = FictionsCatalog::getCatalogs(['fiction_id'=>$fiction->id], ['updated_at', 'asc']);
-        $fiction['category_name'] = $category[$fiction['category_id']];
-
-        $count = count($fiction['catalog']) ;
-        for($i=($count-1) ; $i>($count>=10 ? $count-10 : 0) ; $i--){
-            $newcatalog[] = $fiction['catalog'][$i];
+        {
+            return self::info('找不到小说');
         }
-        $fiction['newcatalog'] = $newcatalog;
+
+        //全部章节
+        $fiction['catalog'] = FictionsCatalog::getCatalogs(['fiction_id'=>$fiction->id], ['updated_at', 'asc']);
+
+        //最新章节
+        $fiction['newcatalog'] = FictionsCatalog::getCatalogs(['fiction_id'=>$fiction->id], ['updated_at', 'desc'], 0, 9);
 
         //数据
         $data = [
             'website'=>self::$website,
             'user'=>[],
-            'category'=>$category,
             'fiction'=>$fiction,
         ];
 
@@ -102,30 +66,43 @@ class HomeController extends Controller
     //阅读页
     public function getRead(Request $request, $fiction_id, $catalog_id)
     {
-        //分类
-        $category = FictionsCategory::getCategorys();
-
+        $fiction_id = intval($fiction_id);
+        $catalog_id = intval($catalog_id);
         if(empty($fiction_id) || empty($catalog_id))
-            die("错误入口");
+        {
+            return self::error('错误入口');
+        }
         
         $fiction = Fictions::getFiction(['id'=>$fiction_id]);
         if(empty($fiction))
-            die("找不到小说");
+        {
+            return self::info('找不到小说');
+        }
 
-        $catalog = FictionsCatalog::getCatalog(['id'=>$catalog_id]);
+        $catalog = FictionsCatalog::getCatalog(['fiction_id'=>$fiction_id,'id'=>$catalog_id]);
         if(empty($catalog))
-            die("找不到章节");
-        
+        {
+            return self::info('找不到章节');
+        }
+
+        //上一篇
+        $upper_catalog = FictionsCatalog::where('fiction_id', '=', $fiction_id)->where('id', '<', $catalog_id)->orderBy('id','desc')->first();
+
+        //下一篇
+        $next_catalog = FictionsCatalog::where('fiction_id', '=', $fiction_id)->where('id', '>', $catalog_id)->orderBy('id','asc')->first();
+
+
         //查找内容
         $catalogcontent = FictionsCatalogContent::getCatalogContent(['fiction_id'=>$fiction_id, 'catalog_id'=>$catalog_id]);
         $catalog['content'] = $catalogcontent->content;
-
         
         $data = [
             'website'=>self::$website,
             'user'=>[],
-            'category'=>$category,
+            'fiction'=>$fiction,
             'catalog'=>$catalog,
+            'upper_catalog'=>$upper_catalog,
+            'next_catalog'=>$next_catalog,
         ];
 
         return view('dome1.read', $data);
