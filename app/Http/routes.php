@@ -23,14 +23,12 @@ Route::get('author', 'ListController@getAuthor');
 Route::get('logout', 'AuthController@getLogout');
 Route::get('login', 'AuthController@getLogin');
 Route::post('login', 'AuthController@postLogin');
-Route::post('register', function(){
-    die("okokoko");
-});
 Route::get('register', 'AuthController@getRegister');
+Route::post('register', 'AuthController@postRegister');
 
 
 //会员
-Route::get('bookcase', 'Member\UserController@getBookcase');
+Route::get('collect', 'Member\UserController@getCollects');
 Route::get('userinfo', 'Member\UserController@getUserinfo');
 Route::get('useredit', 'Member\UserController@getUseredit');
 Route::post('useredit', 'Member\UserController@postUseredit');

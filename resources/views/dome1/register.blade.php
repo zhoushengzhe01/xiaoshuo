@@ -73,14 +73,14 @@
 					<tr>
 						<td align="right" valign="middle">密　　码：</td>
 						<td>
-						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="password">
+						<input type="password" class="text" size="20" maxlength="30" style="width:150px" name="password">
 						（必填）
 						</td>
 					</tr>
 					<tr>
 						<td align="right" valign="middle">确认密码：</td>
 						<td>
-						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="setpassword">
+						<input type="password" class="text" size="20" maxlength="30" style="width:150px" name="setpassword">
 						（必填）
 						</td>
 					</tr>
@@ -88,7 +88,7 @@
 						<td align="right" valign="middle">邮　　箱：</td>
 						<td>
 						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="email">
-						（必填）						
+						（必填）
 						</td>
 					</tr>
 					<tr>
@@ -107,7 +107,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="odd" width="25%"></td>
+						<td class="odd" width="25%">{!! csrf_field() !!}</td>
 						<td class="even"><input type="submit" class="button" name="submit"  id="submit" value="提 交" /></td>
 					</tr>
 				</table>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Model\Fictions;
 use App\Model\FictionsCatalog;

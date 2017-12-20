@@ -64,7 +64,7 @@
 						<td><input type="password" class="text" size="20" maxlength="30" style="width:120px" name="password"></td>
 					</tr>
 					<tr>
-						<td><input type="hidden" name="action" value="login"></td>
+						<td><input type="hidden" name="action" value="login">{!! csrf_field() !!}</td>
 						<td><input type="submit" class="button" value="&nbsp;登&nbsp;&nbsp;录&nbsp;" name="submit"></td>
 					</tr>
 				</table>

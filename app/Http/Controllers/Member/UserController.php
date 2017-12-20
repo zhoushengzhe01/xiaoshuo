@@ -2,10 +2,11 @@
 namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Model\Fictions;
 use App\Model\FictionsCatalog;
-use App\Model\FictionsCatalog_content;
+use App\Model\FictionsCatalogContent;
 use App\Model\FictionsCategory;
 use App\Model\FictionsCollect;
 use App\Model\FictionsHistory;
@@ -20,10 +21,31 @@ use App\Model\WebsiteDomain;
 
 class UserController extends Controller
 {
-    //我的收藏
-    public function getBookcase(Request $request)
+
+    public function __construct()
     {
-        //die("首页");
+        parent::__construct();
+
+        //验证用户
+        self::verifyUser();
+    }
+    //我的收藏
+    public function getCollects(Request $request)
+    {
+        // $fictions = Fictions::where(['fictions_collect.user_id'=>self::$user->id] )
+        //     ->leftJoin('fictions_collect', 'fictions.id', '=', 'fictions_collect.fiction_id')
+        //     ->select('fictions.*')
+        //     ->paginate(20);
+        //     echo self::$user->id;
+        //     die(self::$user->id);
+
+        $collect = FictionsCollect::where('user_id','=',self::$user->id)->paginate(20);
+        $data = [
+            'website'=>self::$website,
+            'user'=>self::$user,
+            'collect'=>$collect,
+        ];
+        return view('dome1.member.collect', $data);
     }
 
     //我的资料

@@ -50,9 +50,9 @@
                 <div class="modal-footer">
                     <a href="{{$website->site}}" class="btn btn-info btn-sm">返回首页</a>
                     @if ($url=='-1')
-                    <a href="{{$website->site}}/{{$url}}" onclick="window.history.back(-1);" class="btn btn-info btn-sm">直接进入</a>
+                    <a href="javascript:void(0)" onclick="window.history.back(-1);" class="btn btn-info btn-sm">直接进入</a>
                     @else
-                    <a href="{{$website->site}}{{$url}}" onclick="window.history.back(-1);" class="btn btn-info btn-sm">直接进入</a>
+                    <a href="{{$url}}" class="btn btn-info btn-sm">直接进入</a>
                     @endif
                     
                 </div>
@@ -69,7 +69,7 @@
                     @if ($url=='-1')
                     window.history.back(-1);
                     @else
-                    window.location.href="{{$website->site}}/{{$url}}"; 
+                    window.location.href="{{$url}}"; 
                     @endif
                 }
             }, 1000)

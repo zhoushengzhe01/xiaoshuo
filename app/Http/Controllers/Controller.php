@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -9,14 +8,17 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
 use App\Model\Users;
+use App\Model\UsersLevel;
 use App\Model\Website;
 use App\Model\WebsiteDomain;
+use Session;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
     
     protected static $website;
+    protected static $user = [];
 
     public function __construct()
     {
@@ -44,6 +46,22 @@ class Controller extends BaseController
         self::$website->public = self::$website->site.'/dome01';
     }
 
+    //验证用户
+    public static function verifyUser()
+    {
+        $userid = Session::get('userid');
+        $username = Session::get('username');
+        if(empty($userid) || empty($username))
+        {
+            return self::info('你还没有登陆，请登陆', '/login');
+        }
+        $user = Users::getUser(['id'=>$userid, 'username'=>$username]);
+        //等级
+        $user->level = UsersLevel::getLevel(['id'=>$user->level]);
+        
+        self::$user = $user;
+    }
+    
     //提示页面
     public static function success($message='操作成功', $url='-1')
     {
