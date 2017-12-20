@@ -262,10 +262,12 @@ img{border:0; vertical-align:middle;}
 #frmpassedit table{border-collapse:collapse;}
 #frmpassedit tr td{border-top: 1px solid #8D6661;border-right: 1px solid #8D6661; padding-left: 5px; }
 #frmnewmessage td{border: 1px solid #8D6661; border-left: 0px; border-bottom: 0px; padding-left: 5px}
-.pagelink{text-align: center;margin:20px 0px}
-.pagelink em ,.pagelink a,.pagelink kbd,.pagelink strong,.pagelink #pagestats{ padding:3px 13px;background: #8D6661; color: #FFF;margin:0px 2px;border-radius:3px;}
-.pagelink kbd,.pagelink input{display: none}
-.pagelink strong{background: #674748 }
+
+.pagination{text-align: center;margin:20px 0px}
+.pagination li{display: initial;}
+.pagination li a{padding: 6px 14px; background: #8D6661; color: #FFF; margin: 0px 2px; border-radius: 3px;}
+.pagination li span{padding: 6px 14px; background: #674748; color: #FFF; margin: 0px 2px; border-radius: 3px;}
+
 .jump{border:1px solid #ddd;width:500px;margin:0 auto;margin-top:200px;border-radius:5px; background:#fff;padding:20px;box-shadow:0px 0px 2px 1px #876762;font-size:14px;}
 .jump a{color:#46A1DF}
 .jump .blocktitle{font-size:16px;}

@@ -1,124 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gbk">
-<title>17模板网</title>
-<meta name="keywords" content="杰奇 小说 最新 最快" />
-<meta name="description" content="基于杰奇小说连载系统构建，为您提供提供内容优质，更新最快的小说。" />
-<link href="style/style.css" rel="stylesheet" />
-<script src="script/common.js"></script>
-<script src="script/base.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{{$website->title}}-{{$website->seo_title}}</title>
+<meta name="keywords" content="{{$website->seo_keywords}}"/>
+<meta name="description" content="{{$website->seo_description}}"/>
+<link href="{{$website->public}}/style/style.css" rel="stylesheet" />
+<script src="{{$website->public}}/script/common.js"></script>
+<script src="{{$website->public}}/script/base.js"></script>
 </head>
 <body>
 
 <div class="main">
-    <!-- 头部部分 -->
-    <div class="head">
+	<!-- 头部部分 -->
+	<div class="head">
         <div class="top">
-            <div class="p2">
-                <!-- <a href="/">返回首页</a> | <a href="/login.html">登陆</a> <a href="/register.html">用户注册</a> | <a href="bookcase.html">我的书架</a> | <a href="history.html">阅读记录</a> -->
-                <a href="/userdetail.php"><font color="#876762">欢迎你：zhoushengzhe（用户信息）</font></a> | <a href="bookcase.html">我的书架</a> | <a href="/">退出登陆</a> | <a href="history.html">阅读记录</a>
-            </div>
+			<div class="p2">
+				<!-- <a href="/">返回首页</a> | <a href="/login.html">登陆</a> <a href="/register.html">用户注册</a> | <a href="bookcase.html">我的书架</a> | <a href="history.html">阅读记录</a> -->
+				<a href="/userdetail.php"><font color="#876762">欢迎你：zhoushengzhe（用户信息）</font></a> | <a href="bookcase.html">我的书架</a> | <a href="/">退出登陆</a> | <a href="history.html">阅读记录</a>
+			</div>
         </div>
-        <div class="logo"><a href="/"><img src="images/logo.png" alt="17模板网" /></a></div>
-        <div class="search">
-            <form action="search.html" method="post">
-                <input id="text1" type="text" name="searchkey" />
-                <input id="text2" type="submit" value="点击搜索"/>
-            </form>
-        </div>
-        <div class="dl_sj">
-            <p class="sj"><i></i><a href="bookcase.html">书架</a></p>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <!--导航-->
-    <div class="nav">
-        <ul>
-            <li><a href="/">首页</a></li>
-            <li><a href="">玄幻小说</a></li>
-            <li><a href="">仙侠小说</a></li>
-            <li><a href="">都市小说</a></li>
-            <li><a href="">军史小说</a></li>
-            <li><a href="">网游小说</a></li>
-            <li><a href="">科幻小说</a></li>
-            <li><a href="">恐怖小说</a></li>
-            <li><a href="">其他小说</a></li>
-            <li><a href="">排行榜</a></li>
-            <li><a href="">完结小说</a></li>
-            <div class="clear"></div>
-        </ul>
-    </div>
+		<div class="logo"><a href="{{$website->site}}"><img src="{{$website->public}}/images/logo.png" alt="###" /></a></div>
+		<div class="search">
+			<form action="{{$website->site}}/search" method="get">
+				<input id="text1" type="text" name="word"/>
+				<input id="text2" type="submit" value="点击搜索"/>
+			</form>
+		</div>
+		<div class="dl_sj">
+			<p class="sj"><i></i><a href="bookcase.html">书架</a></p>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!--导航-->
+	<div class="nav">
+		<ul>
+			<?php $category = App\Model\FictionsCategory::getCategorys(); ?>
+			<li><a href="{{$website->site}}">首页</a></li>
+			@foreach ($category as $val)
+			<li><a href="{{$website->site}}/list/{{$val->id}}">{{$val->name}}小说</a></li>
+			@endforeach
+			<li><a href="{{$website->site}}/ranking/9">排行榜</a></li>
+			<li><a href="{{$website->site}}/ranking/9">完结小说</a></li>
+			<div class="clear"></div>
+		</ul>
+	</div>
+
     <!--类型-->
     <div class="rankingnav">
         <ul>
-            <li><a href="#">总点击榜</a></li>
-            <li><a href="#">月点击榜</a></li>
-            <li><a href="#">周点击榜</a></li>
-            <li><a href="#">总推荐榜</a></li>
-            <li><a href="#">月推荐榜</a></li>
-            <li><a href="#">周推荐榜</a></li>
-            <li><a href="#">总收藏榜</a></li>
-            <li><a href="#">总字数榜</a></li>
-            <li><a href="#">最新入库</a></li>
-            <li><a href="#">最近更新</a></li>
+            <li><a href="{{$website->site}}/ranking/0">总点击榜</a></li>
+            <li><a href="{{$website->site}}/ranking/1">月点击榜</a></li>
+            <li><a href="{{$website->site}}/ranking/2">周点击榜</a></li>
+            <li><a href="{{$website->site}}/ranking/3">总推荐榜</a></li>
+            <li><a href="{{$website->site}}/ranking/4">月推荐榜</a></li>
+            <li><a href="{{$website->site}}/ranking/5">周推荐榜</a></li>
+            <li><a href="{{$website->site}}/ranking/7">月收藏榜</a></li>
+            <li><a href="{{$website->site}}/ranking/8">周收藏榜</a></li>
+            <li><a href="{{$website->site}}/ranking/9">最新入库</a></li>
+            <li><a href="{{$website->site}}/ranking/10">最近更新</a></li>
             <div class="clear"></div>
         </ul>
     </div>
     <table class="grid" cellpadding="0" cellspacing="0" id="rankinglist" width="100%" align="center">
         <tr align="left">
-            <th width="20%">小说书名</th>
-            <th width="40%">最新章节</th>
+            <th width="20%">文章名称</th>
+            <th width="30%">最新章节</th>
             <th width="15%">作者</th>
-            <th width="9%">字数</th>
-            <th width="10%">更新</th>
-            <th width="6%">状态</th>
+            <th width="15%">更新</th>
+            <th width="10%">状态</th>
+            <th width="10%">操作</th>
         </tr>
+        @foreach ($fictions as $key=>$val)
         <tr>
-            <td><p><a href="/0/1/">我欲封天</a></p></td>
-            <td><p><a href="http://b4.ku180.com/0/1/226.html" target="_blank">第三卷 紫运称尊 第210章 拜入紫运宗</a></p></td>
-            <td><p>耳根</p></td>
-            <td><p>1090K</p></td>
-            <td><p>2016-04-22</p></td>
-            <td><p>连载</p></td>
+            <td class="odd"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></td>
+            <td class="even"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->new_catalog_id}}" target="_blank">{{$val->new_catalog_title}}</a></td>
+            <td class="odd"><a href="{{$website->site}}/author/?key={{$val->author}}">{{$val->author}}</a></td>
+            <td class="odd" align="left">{{$val->created_at}}</td>
+            <td class="even" align="left">@if ($val->state == 1) 转载中 @else 转载完毕 @endif</td>
+            <td class="even" align="left">
+                <a href="#">立即阅读</a>
+            </td>
         </tr>
-        <tr>
-            <td><p><a href="/0/5/">众星之主</a></p></td>
-            <td><p><a href="http://b4.ku180.com/0/5/714.html" target="_blank">第十五章人屠</a></p></td>
-            <td><p>一伤二十八</p></td>
-            <td><p>349K</p></td>
-            <td><p>2016-04-22</p></td>
-            <td><p>连载</p></td>
-        </tr>
-        <tr>
-            <td><p><a href="/0/9/">花心保镖</a></p></td>
-            <td><p><a href="http://b4.ku180.com/0/9/1310.html" target="_blank">第220章 对峙卫海利！</a></p></td>
-            <td><p>笑看雪舞</p></td>
-            <td><p>1105K</p></td>
-            <td><p>2016-04-22</p></td>
-            <td><p>连载</p></td>
-        </tr>
-        <tr>
-            <td><p><a href="/0/9/">花心保镖</a></p></td>
-            <td><p><a href="http://b4.ku180.com/0/9/1310.html" target="_blank">第220章 对峙卫海利！</a></p></td>
-            <td><p>笑看雪舞</p></td>
-            <td><p>1105K</p></td>
-            <td><p>2016-04-22</p></td>
-            <td><p>连载</p></td>
-        </tr>
+		@endforeach
     </table>
 
     <!--分页-->
-    <div class="pages">
-        <div class="pagelink" id="pagelink">
-            <em id="pagestats">1/1</em>
-            <a href="#" class="first">1</a>
-            <a href="#" class="pgroup">&lt;&lt;</a>
-            <strong>1</strong>
-            <a href="#" class="ngroup">&gt;&gt;</a>
-            <a href="#" class="last">1</a>
-        </div>
-    </div>
+    {!! $fictions->links() !!}
+
     <!--底部信息-->
     <div class="footer">
         <div class="left">

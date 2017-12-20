@@ -47,7 +47,7 @@
 	</div>
     
     <table id="author" class="grid" width="100%" align="center" cellspacing="0" style="border: 1px solid #8D6661" >
-        <caption style="color: #666;margin-top: 15px; background: #8D6661; color: #FFF; border-radius: 3px 3px 0px 0px;">搜索&nbsp;&nbsp;<span style="color: #fff; font-weight: bold;">{{$word}}</span>&nbsp;&nbsp;的文章列表</caption>                
+        <caption style="color: #666;margin-top: 15px; background: #8D6661; color: #FFF; border-radius: 3px 3px 0px 0px;"><span style="color: #fff; font-weight: bold;">{{$word}}</span>&nbsp;&nbsp;的所有作品</caption>                
         <tr align="left">
             <th width="20%">文章名称</th>
             <th width="30%">最新章节</th>
@@ -70,13 +70,7 @@
 		@endforeach
     </table>
     {!! $fictions->links() !!}
-    <script>
-        //一个结果直接跳转
-        @if (count($fictions)==1)
-        window.location.href="{{$website->site}}/book/{{$fictions[0]->id}}";
-        @endif
-    </script>
-    
+
     <!--底部信息-->
     <div class="footer">
         <div class="left">

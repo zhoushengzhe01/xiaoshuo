@@ -22,8 +22,8 @@
         </div>
 		<div class="logo"><a href="{{$website->site}}"><img src="{{$website->public}}/images/logo.png" alt="###" /></a></div>
 		<div class="search">
-			<form action="search.html" method="post">
-				<input id="text1" type="text" name="searchkey" />
+			<form action="{{$website->site}}/search" method="get">
+				<input id="text1" type="text" name="word"/>
 				<input id="text2" type="submit" value="点击搜索"/>
 			</form>
 		</div>
@@ -40,8 +40,8 @@
 			@foreach ($category as $val)
 			<li><a href="{{$website->site}}/list/{{$val->id}}">{{$val->name}}小说</a></li>
 			@endforeach
-			<li><a href="{{$website->site}}">排行榜</a></li>
-			<li><a href="{{$website->site}}">完结小说</a></li>
+			<li><a href="{{$website->site}}/ranking/9">排行榜</a></li>
+			<li><a href="{{$website->site}}/ranking/11">完结小说</a></li>
 			<div class="clear"></div>
 		</ul>
 	</div>
@@ -54,7 +54,7 @@
 				<p class="pic"><a href="{{$website->site}}/book/{{$val->id}}"><img src="{{$website->public}}/images/5s.jpg" width="220" height="275"/></a></p>
 				<div class="pp">
 					<p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p>
-					<p class="p2">分类：仙侠小说&nbsp;&nbsp;/&nbsp;&nbsp;作者：<a href="{{$website->site}}/search/?key={{$val->author}}">{{$val->author}}</a></p>
+					<p class="p2">分类：仙侠小说&nbsp;&nbsp;/&nbsp;&nbsp;作者：<a href="{{$website->site}}/author/?key={{$val->author}}">{{$val->author}}</a></p>
 					<p class="p3">{{$val->intro}}</p>
 					<p class="p4"><a href="{{$website->site}}/book/{{$val->id}}" class="read">阅读本书</a><span>状态：@if ($val->state == 1) 转载中 @else 转载完毕 @endif</span></p>
 					<p class="p5">最新：<a href="{{$website->site}}/book/{{$val->id}}/{{$val->new_catalog_id}}">{{$val->new_catalog_title}}</a>(04-22 17:49)</p>
@@ -98,8 +98,8 @@
 	</div>
 	<div class="submenu1">
 		<div class="list list1">
-			<h3><a href="/paihang/allvisit_1.html">排行榜</a></h3>
-			<div class="gengduo"><a href="/paihang/allvisit_1.html">更多</a></div>
+			<h3><a href="{{$website->site}}/ranking/9">排行榜</a></h3>
+			<div class="gengduo"><a href="{{$website->site}}/ranking/9">更多</a></div>
 			<ul>
 				<?php $result = App\Model\Fictions::getFictions([], ['all_click', 'desc'], 0, 10); ?>
 				@foreach ($result as $key=>$val)
@@ -113,8 +113,8 @@
 			</ul>
 		</div>
         <div class="list list1">
-            <h3><a href="ranking.html">推荐排行</a></h3>
-            <div class="gengduo"><a href="ranking.html">更多</a></div>
+            <h3><a href="{{$website->site}}/ranking/3">推荐排行</a></h3>
+            <div class="gengduo"><a href="{{$website->site}}/ranking/3">更多</a></div>
             <ul>
 				<?php $result = App\Model\Fictions::getFictions([], ['all_recommend', 'desc'], 0, 10); ?>
 				@foreach ($result as $key=>$val)
@@ -128,8 +128,8 @@
             </ul>
         </div>
 		<div class="list list1">
-			<h3><a href="list.html">完结小说</a></h3>
-			<div class="gengduo"><a href="list.html">更多</a></div>
+			<h3><a href="{{$website->site}}/ranking/11">完结小说</a></h3>
+			<div class="gengduo"><a href="{{$website->site}}/ranking/11">更多</a></div>
 			<ul>
 				<?php $result = App\Model\Fictions::getFictions(['state'=>2], ['updated_at', 'desc'], 0, 10); ?>
 				@foreach ($result as $key=>$val)
@@ -144,8 +144,8 @@
 		</div>
 		
 		<div class="list list1">
-			<h3><a href="ranking.html">收藏榜</a></h3>
-			<div class="gengduo"><a href="ranking.html">更多</a></div>
+			<h3><a href="{{$website->site}}/ranking/6">收藏榜</a></h3>
+			<div class="gengduo"><a href="{{$website->site}}/ranking/6">更多</a></div>
 			<ul>
 				<?php $result = App\Model\Fictions::getFictions([], ['all_collect', 'desc'], 0, 10); ?>
 				@foreach ($result as $key=>$val)

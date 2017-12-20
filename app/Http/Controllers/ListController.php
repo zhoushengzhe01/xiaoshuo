@@ -28,25 +28,88 @@ class ListController extends Controller
         {
             return self::error('错误入口');
         }
-        
+
+        $fictions = Fictions::where('category_id', '=', $category_id)->paginate(6);
 
         $data = [
             'website'=>self::$website,
             'user'=>[],
+            'category_id'=>$category_id,
+            'fictions'=>$fictions,
         ];
 
         return view('dome1.list', $data);
     }
 
     //排行
-    public function getRanking(Request $request)
+    public function getRanking(Request $request, $type)
     {
-        die("详细页");
+        $order = ['all_click','month_click','week_click','all_recommend','month_recommend','week_recommend','all_collect','month_collect','week_collect','created_at','updated_at','state'];
+        if(empty($order[$type]))
+        {
+            return self::error('错误入口');
+        }
+
+        if($type==11)
+        {
+            $fictions = Fictions::where('state', '=', 2)->orderBy('updated_at', 'desc')->paginate(25);
+        }
+        else
+        {
+            $fictions = Fictions::orderBy($order[$type], 'desc')->paginate(25);
+        }
+        
+
+        $data = [
+            'website'=>self::$website,
+            'user'=>[],
+            'fictions'=>$fictions,
+        ];
+
+        return view('dome1.ranking', $data);
     }
 
     //搜索
     public function getSearch(Request $request)
     {
-        die("阅读页");
+        $word = trim($request->input('word'));
+        
+        if(empty($word))
+        {
+            return self::info('请输入搜索内容');
+        }
+        
+        $fictions = Fictions::where('title', 'like', '%'.$word.'%')->paginate(6);
+        
+        $data = [
+            'website'=>self::$website,
+            'user'=>[],
+            'word'=>$word,
+            'fictions'=>$fictions,
+        ];
+
+        return view('dome1.search', $data);
+    }
+
+    //作者作品
+    public function getAuthor(Request $request)
+    {
+        $word = trim($request->input('word'));
+        
+        if(empty($word))
+        {
+            return self::info('请输入搜索内容');
+        }
+        
+        $fictions = Fictions::where('author', 'like', '%'.$word.'%')->paginate(6);
+
+        $data = [
+            'website'=>self::$website,
+            'user'=>[],
+            'word'=>$word,
+            'fictions'=>$fictions,
+        ];
+
+        return view('dome1.author', $data);
     }
 }

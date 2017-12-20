@@ -108,7 +108,7 @@
 							<p class="pic"><a href="{{$website->site}}/book/{{$val->id}}"><img src="{{$website->public}}/images/5s.jpg" width="80" height="105" /></a></p>
 							<div class="pp">
 								<p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p>
-								<p class="p2"><a href="{{$website->site}}/search/?key={{$val->author}}">作者：{{$val->author}}</a></p>
+								<p class="p2"><a href="{{$website->site}}/author/?key={{$val->author}}">作者：{{$val->author}}</a></p>
 								<p class="p3">{{$val->intro}}</p>
 								<div class="clear"></div>
 							</div>
@@ -140,7 +140,7 @@
 							<p class="pic"><a href="{{$website->site}}/book/{{$val->id}}"><img src="{{$website->public}}/images/5s.jpg" width="80" height="105" /></a></p>
 							<div class="pp">
 								<p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p>
-								<p class="p2"><a href="{{$website->site}}/search/?key={{$val->author}}">作者：{{$val->author}}</a></p>
+								<p class="p2"><a href="{{$website->site}}/author/?key={{$val->author}}">作者：{{$val->author}}</a></p>
 								<p class="p3">{{$val->intro}}</p>
 								<div class="clear"></div>
 							</div>
