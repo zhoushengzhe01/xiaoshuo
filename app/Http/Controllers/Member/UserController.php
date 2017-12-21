@@ -19,7 +19,7 @@ use App\Model\UsersMessage;
 use App\Model\UsersSeting;
 use App\Model\Website;
 use App\Model\WebsiteDomain;
-
+use Hash;
 
 class UserController extends Controller
 {
@@ -323,55 +323,108 @@ class UserController extends Controller
             return self::info('你还没有登陆，请登陆', '/login');
         }
 
-            
+        //获取网站
         $file = $request->file('photo');
-
-        // 文件是否上传成功
         if ($file->isValid()) {
-            
-            // 获取文件相关信息
-            $originalName = $file->getClientOriginalName(); // 文件原名
-            $ext = $file->getClientOriginalExtension();     // 扩展名
-            $realPath = $file->getRealPath();   //临时文件的绝对路径
-            $type = $file->getClientMimeType();     // image/jpeg
-            
-            // 上传文件
-            $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . '.' . $ext;
-            // 使用我们新建的uploads本地存储空间（目录）
-            die;
-            $bool = Storage::disk('uploads')->put($filename, file_get_contents($realPath));
-            var_dump($bool);
 
+            $clientName = $file->getClientOriginalName();
+            $tmpName = $file->getFileName();
+            $realPath = $file->getRealPath();
+            $extension = $file->getClientOriginalExtension();
+            $mimeTye = $file->getMimeType();
+            
+            //验证
+            if(!in_array($mimeTye, ['image/png', 'image/jpeg', 'image/gif']))
+            {
+                return self::info('图片格式不正确');
+            }
+            //验证图片格式
+            $newName = "head_". self::$user->id .".".$extension;
+
+            $path = $file->move('uploads',$newName);
+
+            //修改数据
+            $user = Users::getUser(['id'=>self::$user->id]);
+            $user->head = $path;
+            if($user->save())
+            {
+                return self::success('修改成功');
+            }
+            else
+            {   
+                return self::error('修改失败');
+            }
         }
-
-        // if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
-           
-        //     $photo = $request->file('photo');
-        //     $extension = $photo->extension();
-        //     die('okok');
-        //     //$store_result = $photo->store('photo');
-            
-        //     $store_result = $photo->storeAs('photo', 'test.jpg');
-        //     $output = [
-        //         'extension' => $extension,
-        //         'store_result' => $store_result
-        //     ];
-        //     print_r($output);exit();
-        // }
-        // exit('未获取到上传文件或上传过程出错');
+        else
+        {
+            return self::info('上传出错');
+        }
 
     }
 
     //修改密码
     public function getPassedit(Request $request)
     {
-        //die("阅读页");
+        //登录
+        if(self::verifyUser()!==true)
+        {
+            return self::info('你还没有登陆，请登陆', '/login');
+        }
+
+        $data = [
+            'website'=>self::$website,
+            'user'=>self::$user,
+        ];
+
+        return view('dome1.member.passedit', $data);
     }
 
     //提交修改密码
     public function postPassedit(Request $request)
     {
-        //die("阅读页");
+        //登录
+        if(self::verifyUser()!==true)
+        {
+            return self::info('你还没有登陆，请登陆', '/login');
+        }
+        $oldpass = trim($request->input('oldpass'));
+        $newpass = trim($request->input('newpass'));
+        $repass = trim($request->input('repass'));
+        
+        
+        if(empty($oldpass))
+        {
+            return self::error('请输入老密码');
+        }
+       
+        if(empty($newpass))
+        {
+            return self::error('请输入新密码');
+        }
+        if(empty($repass))
+        {
+            return self::error('输入确认新密码');
+        }
+        if(strlen($newpass)<6 || strlen($newpass)>18)
+        {
+            return self::error('密码必须大于6位数，小于18位数');
+        }
+        if($newpass!=$repass)
+        {
+            return self::error('两次密码输入不一样');
+        }
+    
+        $user = Users::getUser(['id'=>self::$user->id]);
+        if (!Hash::check($oldpass, $user->password))
+        {
+            return self::error('老密码不正确');
+        }
+        $user->password = bcrypt($newpass);
+        if($user->save())
+        {
+            return self::success('修改成功', self::$website->site.'/login');
+        }
+        
     }
     
 }

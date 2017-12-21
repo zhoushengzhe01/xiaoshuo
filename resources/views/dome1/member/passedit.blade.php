@@ -70,28 +70,30 @@
 		</div>
 	</div>
 
-	<div class="myright" style=" border: 1px solid #8D6661; border-right: 0px; border-radius: 3px;">
-		<p class="userinfo">设置个人用户头像</p>
-		<form name="setavatar" id="setavatar" action="{{$website->site}}/sethead" method="post" enctype="multipart/form-data">
-		<table width="100%" class="grid" cellspacing="1" align="center">
+	<div class="myright" style="border: 1px solid #8D6661; border-right: 0px; border-radius: 3px;">
+		<p class="userinfo">修改个人密码</p>
+		<form name="frmpassedit" id="frmpassedit" action="{{$website->site}}/passedit" method="post" onsubmit="return frmpassedit_validate();">
+		<table width="100%" class="grid" cellspacing="0" cellpadding="0" align="center" style="margin: 0px auto">
 		<tbody>
 			<tr valign="middle" align="left">
 				<td class="odd" width="25%">用户名</td>
 				<td class="even">{{$user->username}}</td>
 			</tr>
 			<tr valign="middle" align="left">
-				<td class="odd" width="25%">当前头像</td>
-				<td class="even"><img src="{{$website->site}}/{{$user->head}}" style="width: 100px;height: 100px;margin: 4px 0px;"/></td>
+				<td class="odd" width="25%">原密码</td>
+				<td class="even"><input type="password" class="text" name="oldpass" id="oldpass" size="25" maxlength="20" value=""></td>
 			</tr>
 			<tr valign="middle" align="left">
-				<td class="odd" width="25%">上传头像</td>
-				<td class="even"><input type="file" class="text" size="30" name="photo" id="photo"><br>
-				<span class="hottext" style="color: red">头像图片格式为 .gif .jpg .jpeg .png ，文件大小不能超过 1000K</span>
-				</td>
+				<td class="odd" width="25%">新密码</td>
+				<td class="even"><input type="password" class="text" name="newpass" id="newpass" size="25" maxlength="20" value=""></td>
+			</tr>
+			<tr valign="middle" align="left">
+				<td class="odd" width="25%">重复新密码</td>
+				<td class="even"><input type="password" class="text" name="repass" id="repass" size="25" maxlength="20" value=""></td>
 			</tr>
 			<tr valign="middle" align="left">
 				<td class="odd" width="25%">{!! csrf_field() !!}</td>
-				<td class="even"><input type="submit" class="button" name="submit" id="submit" value="上传头像"></td>
+				<td class="even"><input type="submit" class="button" name="submit" id="submit" value="保 存"></td>
 			</tr>
 		</tbody>
 		</table>
