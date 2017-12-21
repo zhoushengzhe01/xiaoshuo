@@ -29,12 +29,14 @@ Route::post('register', 'AuthController@postRegister');
 
 //会员
 Route::get('collect', 'Member\UserController@getCollects');
+Route::any('collect/{action}', 'Member\UserController@actionCollect');
+
 Route::get('userinfo', 'Member\UserController@getUserinfo');
 Route::get('useredit', 'Member\UserController@getUseredit');
 Route::post('useredit', 'Member\UserController@postUseredit');
 //设置头像
-Route::get('setavatar', 'Member\UserController@getSetavatar');
-Route::post('setavatar', 'Member\UserController@postSetavatar');
+Route::get('sethead', 'Member\UserController@getSethead');
+Route::post('sethead', 'Member\UserController@postSethead');
 //修改密码
 Route::get('passedit', 'Member\UserController@getPassedit');
 Route::post('passedit', 'Member\UserController@postPassedit');
@@ -44,3 +46,4 @@ Route::get('outboxemail', 'Member\EmailController@getOutboxemail');
 Route::get('sendemail', 'Member\EmailController@getSendemail');
 Route::post('sendemail', 'Member\EmailController@postSendemail');
 
+Route::any('{all}', function(){die("404不存在的路由");})->where('all', '.*');

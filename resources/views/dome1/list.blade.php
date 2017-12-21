@@ -65,7 +65,7 @@
 			</div>
 			<div class="novellink">
 				<p><a href="#">立即阅读</a></p>
-				<p><a href="#">加入书架</a></p>
+				<p><a href="{{$website->site}}/collect/add?fiction_id={{$val->id}}">加入书架</a></p>
 				<p><a href="#">推荐本书</a></p>
 				<div class="clear"></div>
 			</div>

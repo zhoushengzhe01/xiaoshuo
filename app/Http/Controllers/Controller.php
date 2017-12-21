@@ -53,13 +53,15 @@ class Controller extends BaseController
         $username = Session::get('username');
         if(empty($userid) || empty($username))
         {
-            return self::info('你还没有登陆，请登陆', '/login');
+            return false;
         }
         $user = Users::getUser(['id'=>$userid, 'username'=>$username]);
         //等级
         $user->level = UsersLevel::getLevel(['id'=>$user->level]);
         
         self::$user = $user;
+        
+        return true;
     }
     
     //提示页面

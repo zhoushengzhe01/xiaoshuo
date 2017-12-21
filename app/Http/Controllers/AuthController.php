@@ -51,12 +51,11 @@ class AuthController extends Controller
         {
             return self::error('请输入密码');
         }
-
         //user
         $user = Users::getUser(['username'=>$username]);
         if(empty($user))
         {
-            return self::error('没有次用户名');
+            return self::error('用户名不存在');
         }
         if (!Hash::check($password, $user->password))
         {

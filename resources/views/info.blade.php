@@ -23,7 +23,7 @@
             .panel-body{
                 text-align: center;
                 line-height: 40px;
-                color: #f6cf00;
+                color: #333;
             }
             .panel-body .message{
                 font-size: 16px;
@@ -38,7 +38,7 @@
                     <h3 class="panel-title"><i class="fa fa-check" aria-hidden="true"></i> 提示信息</h3>
                 </div>
                 <div class="panel-body">
-                    <p class="message"><i class="fa fa-exclamation" aria-hidden="true" style="font-size:20px;"></i> {{$message}}</p>
+                    <p class="message"><i class="fa fa-exclamation-circle" aria-hidden="true" style="font-size:20px;"></i> {{$message}}</p>
                     <p class="skip"><span id="time">3</span> 秒后跳转，如果没跳转点击  
                     @if ($url=='-1')
                     <a href="javascript:void(0)" onclick="window.history.back(-1);">直接进入</a>

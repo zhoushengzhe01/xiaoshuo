@@ -70,37 +70,93 @@
 		</div>
 	</div>
 
-	<div class="myright" style="border-radius: 3px; border: 1px solid #8D6661">
-	<form action="" method="post" name="checkform" id="checkform" onsubmit="return check_confirm();">
-	<div class="gridtop">您的书架可收藏 {{$user->level->collect}} 本，已收藏 {{$count}} 本。</div>
-	<table class="grid" width="100%" align="center" cellpadding="0" cellspacing="0">
-		<tr align="content">
-			<th width="18%">文章名称</th>
-			<th width="25%">最新章节</th>
-			<th width="25%">书签</th>
-			<th width="15%">更新</th>
-			<th width="7%">操作</th>
-		</tr>
-		@foreach ($fictions as $key=>$val)
-		<tr class="booktr">
-			<td class="even"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></td>
-			<td class="odd"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->new_catalog_id}}">{{$val->new_catalog_title}}</a></td>
-			<td class="even"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->catalog_id}}">{{$val->catalog_title}}</a></td>
-			<td class="odd" align="left">{{$val->publish_at}}</td>
-			<td class="even" align="left">
-				<a href="javascript:if(confirm('确实要将本书移出书架么？')) document.location='{{$website->site}}/collect/del/?id={{$val->collect_id}}';">移除</a>
-			</td>
-		</tr>
-		@endforeach
-		<div class="clear"></div>
-		<tr>
-			<td colspan="6" align="center" class="foot">
-			{!! $fictions->links() !!}
-			</td>
-		</tr>
-	</table>
-	</form>
-	
+	<div class="myright" style="border: 1px solid #8D6661; border-radius: 3px; border-right: 0px;">
+		<p class="userinfo" style="border-right:1px solid #8D6661;">个人信息</p>
+		<table class="grid" id="gridbox" width="100%" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr align="left">
+				<td width="20%" class="odd">用户ID：</td>
+				<td width="40%" class="even">{{$user->id}}</td>
+				<td width="40%" rowspan="10" class="even" align="center" style="border-right: 1px solid #786661">
+				<img src="{{$user->head}}" class="avatar" alt="头像">
+				</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">用户名：</td>
+				<td class="even">{{$user->username}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">昵称：</td>
+				<td class="even">{{$user->nickname}}</td>
+			</tr>
+
+			<tr align="left">
+				<td class="odd">性别：</td>
+				<td class="even">@if ($user->sex==1) 男 @elseif($user->sex==2) 女 @else 保密 @endif</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">Email：</td>
+				<td class="even"><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
+			</tr>
+			<tr align="left">
+				<td class="odd">QQ：</td>
+				<td class="even">{{$user->qq}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">SMN：</td>
+				<td class="even">{{$user->msn}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">个人网站：</td>
+				<td class="even">{{$user->website}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">经验值</td>
+				<td class="even" colspan="2">{{$user->coin}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">登录 IP：</td>
+				<td colspan="2" class="even">{{$user->login_ip}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">登录时间：</td>
+				<td colspan="2" class="even">{{$user->updated_at}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">注册日期：</td>
+				<td colspan="2" class="even">{{$user->created_at}}</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="foot">等级信息</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">账户类型：</td>
+				<td colspan="2" class="even">{{$user->level->title}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">最多收藏：</td>
+				<td colspan="2" class="even">{{$user->level->collect}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">最大推荐：</td>
+				<td colspan="2" class="even">{{$user->level->recommend}}</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">每天发送邮箱数：</td>
+				<td colspan="2" class="even">{{$user->level->email}}</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="foot">其他信息</td>
+			</tr>
+			<tr align="left">
+				<td class="odd">用户签名：{{$user->sign}}</td>
+				<td colspan="2" class="even"></td>
+			</tr>
+			<tr align="left">
+				<td class="odd">个人简介：</td>
+				<td colspan="2" class="even">{{$user->intro}}</td>
+			</tr>
+		</tbody></table>
 	</div>
 	<div class="clear"></div>
 </div>

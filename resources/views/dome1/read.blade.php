@@ -65,7 +65,7 @@
                 <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$upper_catalog->id}}">上一章</a>
 				@endif
 				<a href="{{$website->site}}/book/{{$catalog->fiction_id}}">返回目录</a>
-                <a href="#">加入书签</a>
+                <a href="{{$website->site}}/collect/add?catalog_id={{$catalog->id}}">加入书签</a>
 				@if ($next_catalog)
                 <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$next_catalog->id}}">下一章</a>
 				@endif
@@ -80,7 +80,7 @@
                 <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$upper_catalog->id}}">上一章</a>
 				@endif
 				<a href="{{$website->site}}/book/{{$catalog->fiction_id}}">返回目录</a>
-                <a href="#">加入书签</a>
+                <a href="{{$website->site}}/collect/add?catalog_id={{$catalog->id}}">加入书签</a>
 				@if ($next_catalog)
                 <a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$next_catalog->id}}">下一章</a>
 				@endif

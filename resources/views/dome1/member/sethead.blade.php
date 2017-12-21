@@ -70,37 +70,34 @@
 		</div>
 	</div>
 
-	<div class="myright" style="border-radius: 3px; border: 1px solid #8D6661">
-	<form action="" method="post" name="checkform" id="checkform" onsubmit="return check_confirm();">
-	<div class="gridtop">您的书架可收藏 {{$user->level->collect}} 本，已收藏 {{$count}} 本。</div>
-	<table class="grid" width="100%" align="center" cellpadding="0" cellspacing="0">
-		<tr align="content">
-			<th width="18%">文章名称</th>
-			<th width="25%">最新章节</th>
-			<th width="25%">书签</th>
-			<th width="15%">更新</th>
-			<th width="7%">操作</th>
-		</tr>
-		@foreach ($fictions as $key=>$val)
-		<tr class="booktr">
-			<td class="even"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></td>
-			<td class="odd"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->new_catalog_id}}">{{$val->new_catalog_title}}</a></td>
-			<td class="even"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->catalog_id}}">{{$val->catalog_title}}</a></td>
-			<td class="odd" align="left">{{$val->publish_at}}</td>
-			<td class="even" align="left">
-				<a href="javascript:if(confirm('确实要将本书移出书架么？')) document.location='{{$website->site}}/collect/del/?id={{$val->collect_id}}';">移除</a>
-			</td>
-		</tr>
-		@endforeach
-		<div class="clear"></div>
-		<tr>
-			<td colspan="6" align="center" class="foot">
-			{!! $fictions->links() !!}
-			</td>
-		</tr>
-	</table>
-	</form>
-	
+	<div class="myright" style=" border: 1px solid #8D6661; border-right: 0px; border-radius: 3px;">
+		<p class="userinfo">设置个人用户头像</p>
+		<form name="setavatar" id="setavatar" action="{{$website->site}}/sethead" method="post" enctype="multipart/form-data">
+		<table width="100%" class="grid" cellspacing="1" align="center">
+		<tbody>
+			<tr valign="middle" align="left">
+				<td class="odd" width="25%">用户名</td>
+				<td class="even">zhoushengzhe</td>
+			</tr>
+			<tr valign="middle" align="left">
+				<td class="odd" width="25%">当前头像</td>
+				<td class="even">
+			
+				</td>
+			</tr>
+			<tr valign="middle" align="left">
+				<td class="odd" width="25%">上传头像</td>
+				<td class="even"><input type="file" class="text" size="30" name="photo" id="photo"><br>
+				<span class="hottext" style="color: red">头像图片格式为 .gif .jpg .jpeg .png ，文件大小不能超过 1000K</span>
+				</td>
+			</tr>
+			<tr valign="middle" align="left">
+				<td class="odd" width="25%">{!! csrf_field() !!}</td>
+				<td class="even"><input type="submit" class="button" name="submit" id="submit" value="上传头像"></td>
+			</tr>
+		</tbody>
+		</table>
+		</form>
 	</div>
 	<div class="clear"></div>
 </div>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
@@ -91,7 +90,7 @@ class FictionsCollect extends Model
     //修改
     public static function putCollect($where, $data)
     {
-        if(empty($where) || empty($data) || count($data)<1 )
+        if(empty($where) || empty($data) || count($data)<1)
             return false;
         
         $collect = self::where($where)->first();
