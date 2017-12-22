@@ -21,6 +21,13 @@ use App\Model\WebsiteDomain;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        self::verifyUser();
+    }
+
     //首页
     public function getIndex(Request $request)
     {

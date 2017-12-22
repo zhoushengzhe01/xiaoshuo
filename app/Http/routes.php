@@ -26,7 +26,6 @@ Route::post('login', 'AuthController@postLogin');
 Route::get('register', 'AuthController@getRegister');
 Route::post('register', 'AuthController@postRegister');
 
-
 //收藏
 Route::get('collect', 'Member\CollectController@getCollects');
 Route::any('collect/{action}', 'Member\CollectController@actionCollect');

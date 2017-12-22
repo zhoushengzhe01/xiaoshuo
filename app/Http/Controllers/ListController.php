@@ -20,6 +20,13 @@ use App\Model\WebsiteDomain;
 
 class ListController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        self::verifyUser();
+    }
+
     //分类
     public function getList(Request $request, $category_id)
     {

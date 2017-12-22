@@ -2,8 +2,11 @@
 	<div class="head">
         <div class="top">
 			<div class="p2">
-				<!-- <a href="/">返回首页</a> | <a href="/login.html">登陆</a> <a href="/register.html">用户注册</a> | <a href="bookcase.html">我的书架</a> | <a href="history.html">阅读记录</a> -->
-				<a href="/userdetail.php"><font color="#876762">欢迎你：zhoushengzhe（用户信息）</font></a> | <a href="bookcase.html">我的书架</a> | <a href="/">退出登陆</a> | <a href="history.html">阅读记录</a>
+				@if ($user)
+				<a href="{{$website->site}}/userinfo"><font color="#876762">欢迎你：{{$user->username}}（用户信息）</font></a> | <a href="{{$website->site}}/collect">我的书架</a> | <a href="/logout">退出登陆</a> | <a href="{{$website->site}}/history">阅读记录</a>
+				@else
+				<a href="{{$website->site}}">返回首页</a> | <a href="{{$website->site}}/login">登陆</a> <a href="{{$website->site}}/register">用户注册</a> | <a href="{{$website->site}}/collect">我的书架</a> | <a href="{{$website->site}}/history">阅读记录</a>
+				@endif
 			</div>
         </div>
 		<div class="logo"><a href="{{$website->site}}"><img src="{{$website->public}}/images/logo.png" alt="###" /></a></div>
