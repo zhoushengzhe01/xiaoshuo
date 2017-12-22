@@ -70,35 +70,28 @@
 		</div>
 	</div>
 
-	<div class="myright" style="border-radius: 3px; border: 1px solid #8D6661">
-	<form action="" method="post" name="checkform" id="checkform" onsubmit="return check_confirm();">
-	<div class="gridtop">您的书架可收藏 {{$user->level->collect}} 本，已收藏 {{$count}} 本。</div>
-	<table class="grid" width="100%" align="center" cellpadding="0" cellspacing="0">
-		<tr align="content">
-			<th width="18%">文章名称</th>
-			<th width="25%">最新章节</th>
-			<th width="25%">书签</th>
-			<th width="15%">更新</th>
-			<th width="7%">操作</th>
+	<div class="myright" style="border: 1px solid #8D6661; border-right: 0px;">
+	<p class="userinfo">发邮件</p>
+	<form name="frmnewmessage" id="frmnewmessage" action="{{$website->site}}/sendmessage" method="post" onsubmit="return frmnewmessage_validate();">
+		<table width="100%" class="grid" cellspacing="0" align="center">
+		<tbody>
+		<tr valign="middle" align="left">
+			<td class="odd" width="25%">收件人</td>
+			<td class="even">网站管理员<input type="hidden" name="username" value="admin"></td>
 		</tr>
-		@foreach ($fictions as $key=>$val)
-		<tr class="booktr">
-			<td class="even"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></td>
-			<td class="odd"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->new_catalog_id}}">{{$val->new_catalog_title}}</a></td>
-			<td class="even"><a href="{{$website->site}}/book/{{$val->id}}/{{$val->catalog_id}}">{{$val->catalog_title}}</a></td>
-			<td class="odd" align="left">{{$val->publish_at}}</td>
-			<td class="even" align="left">
-				<a href="javascript:if(confirm('确实要将本书移出书架么？')) document.location='{{$website->site}}/collect/del/?id={{$val->collect_id}}';">移除</a>
-			</td>
+			<tr valign="middle" align="left"><td class="odd" width="25%">标题</td>
+			<td class="even"><input type="text" class="text" name="title" size="30" maxlength="100" value=""></td>
 		</tr>
-		@endforeach
-		<div class="clear"></div>
-		<tr>
-			<td colspan="6" align="center" class="foot">
-			{!! $fictions->links() !!}
-			</td>
+		<tr valign="middle" align="left">
+			<td class="odd" width="25%">内容</td>
+			<td class="even"><textarea class="textarea" name="content" rows="12" cols="60"></textarea></td>
 		</tr>
-	</table>
+		<tr valign="middle" align="left">
+			<td class="odd" width="25%">{!! csrf_field() !!}</td>
+			<td class="even"><input type="submit" class="button" name="submit" id="submit" value="发 送"></td>
+		</tr>
+		</tbody>
+		</table>
 	</form>
 	</div>
 	<div class="clear"></div>

@@ -27,10 +27,11 @@ Route::get('register', 'AuthController@getRegister');
 Route::post('register', 'AuthController@postRegister');
 
 
-//会员
-Route::get('collect', 'Member\UserController@getCollects');
-Route::any('collect/{action}', 'Member\UserController@actionCollect');
+//收藏
+Route::get('collect', 'Member\CollectController@getCollects');
+Route::any('collect/{action}', 'Member\CollectController@actionCollect');
 
+//会员资料
 Route::get('userinfo', 'Member\UserController@getUserinfo');
 Route::get('useredit', 'Member\UserController@getUseredit');
 Route::post('useredit', 'Member\UserController@postUseredit');
@@ -40,10 +41,14 @@ Route::post('sethead', 'Member\UserController@postSethead');
 //修改密码
 Route::get('passedit', 'Member\UserController@getPassedit');
 Route::post('passedit', 'Member\UserController@postPassedit');
+
 //邮件
-Route::get('inboxemail', 'Member\EmailController@getInboxemail');
-Route::get('outboxemail', 'Member\EmailController@getOutboxemail');
-Route::get('sendemail', 'Member\EmailController@getSendemail');
-Route::post('sendemail', 'Member\EmailController@postSendemail');
+Route::get('messages/{type}', 'Member\MessageController@getMessages');
+Route::get('message/{message_id}', 'Member\MessageController@getMessage');
+Route::get('message/del/{message_id}', 'Member\MessageController@delMessage');
+Route::get('sendmessage', 'Member\MessageController@getSendmessage');
+Route::post('sendmessage', 'Member\MessageController@postSendmessage');
+
+
 
 Route::any('{all}', function(){die("404不存在的路由");})->where('all', '.*');
