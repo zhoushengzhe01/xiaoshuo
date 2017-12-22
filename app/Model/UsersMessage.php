@@ -123,7 +123,7 @@ class UsersMessage extends Model
         }
         else
         {
-            return true;
+            return false;
         }
     }
 }

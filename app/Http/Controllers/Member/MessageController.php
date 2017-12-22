@@ -83,9 +83,28 @@ class MessageController extends Controller
     }
 
     //删除邮箱
-    public function delMessage()
+    public function delMessage(Request $request, $message_id)
     {
+        //登录
+        if(self::verifyUser()!==true)
+        {
+            return self::info('你还没有登陆，请登陆', '/login');
+        }
 
+        if(empty($message_id))
+        {
+            return self::info('错误入口');
+        }
+
+        if(UsersMessage::delMessage(['id'=>$message_id]))
+        {
+            return self::success('删除成功', '/messages/out');
+        }
+        else
+        {
+            return self::info('删除失败');
+        }
+        
     }
 
    
