@@ -15,6 +15,7 @@
 	@include('dome1.header')
 	
 	<div class="submenu">
+
 		<div class="left">
 			<?php $result = App\Model\Fictions::getFictions(['is_index'=>1], ['updated_at', 'desc'], 0, 5); ?>
 			@foreach ($result as $key=>$val)
@@ -22,7 +23,7 @@
 				<p class="pic"><a href="{{$website->site}}/book/{{$val->id}}"><img src="{{$website->public}}/images/5s.jpg" width="220" height="275"/></a></p>
 				<div class="pp">
 					<p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p>
-					<p class="p2">分类：仙侠小说&nbsp;&nbsp;/&nbsp;&nbsp;作者：<a href="{{$website->site}}/author/?key={{$val->author}}">{{$val->author}}</a></p>
+					<p class="p2">分类：仙侠小说&nbsp;&nbsp;/&nbsp;&nbsp;作者：<a href="{{$website->site}}/author/?word={{$val->author}}">{{$val->author}}</a></p>
 					<p class="p3">{{$val->intro}}</p>
 					<p class="p4"><a href="{{$website->site}}/book/{{$val->id}}" class="read">阅读本书</a><span>状态：@if ($val->state == 1) 转载中 @else 转载完毕 @endif</span></p>
 					<p class="p5">最新：<a href="{{$website->site}}/book/{{$val->id}}/{{$val->new_catalog_id}}">{{$val->new_catalog_title}}</a>(04-22 17:49)</p>
@@ -74,7 +75,7 @@
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
-				<li><p class="size1 size2">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
+				<li><p class="size1 size{{$key+1}}">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@endif
 				@endforeach
 				<div class="clear"></div>
@@ -89,7 +90,7 @@
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
-				<li><p class="size1 size2">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
+				<li><p class="size1 size{{$key+1}}">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@endif
 				@endforeach
 				<div class="clear"></div>
@@ -104,7 +105,7 @@
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
-				<li><p class="size1 size2">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
+				<li><p class="size1 size{{$key+1}}">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@endif
 				@endforeach
 				<div class="clear"></div>
@@ -120,7 +121,7 @@
 				@if ($key==0)
 				<li><p class="size1">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@else
-				<li><p class="size1 size2">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
+				<li><p class="size1 size{{$key+1}}">{{$key+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</a></p><p class="author">{{$val->author}}</p></li>
 				@endif
 				@endforeach
 				<div class="clear"></div>
@@ -142,30 +143,28 @@
 		<div class="list @if (($key+1)%4==0) list2 @endif">
 			<h3><a href="{{$website->site}}/list/{{$val->id}}">{{$val->name}}小说  </a></h3>
 			<div class="gengduo"><a href="{{$website->site}}/list/{{$val->id}}">更多</a></div>
-			@if (count($val['list'])>0)
+			@foreach ($val['list'] as $k=>$v)
+			@if ($k==0)
 			<div class="left">
 				<div class="left1">
-					<p class="pic"><a href="{{$website->site}}/book/{{$val['list']['0']->id}}"><img src="{{$website->public}}/images/5s.jpg" width="80" height="105" /></a></p>
+					<p class="pic"><a href="{{$website->site}}/book/{{$v->id}}"><img src="{{$website->public}}/images/5s.jpg" width="80" height="105" /></a></p>
 					<div class="pp">
-						<p class="p1"><a href="{{$website->site}}/book/{{$val['list']['0']->id}}">{{$val['list']['0']->title}}</a></p>
-						<p class="p2"><a href="#">作者：{{$val['list']['0']->author}}</a></p>
-						<p class="p3">{{$val['list']['0']->intro}}</p>
+						<p class="p1"><a href="{{$website->site}}/book/{{$v->id}}">{{$v->title}}</a></p>
+						<p class="p2"><a href="#">作者：{{$v->author}}</a></p>
+						<p class="p3">{{$v->intro}}</p>
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
 				</div>
 			</div>
-			@endif
 			<ul>
-				@foreach ($val['list'] as $k=>$v)
-				@if ($k==0)
-				<li><p class="size1">{{$k+1}}</p><p class="p1"><a href="article">{{$v->title}}</a></p></li>
-				@else
-				<li><p class="size1 size2">{{$k+1}}</p><p class="p1"><a href="article">{{$v->title}}</a></p></li>
-				@endif
-				@endforeach
-				<div class="clear"></div>
-			</ul>
+			@else
+				<li><p class="size1 size{{$k}}">{{$k+1}}</p><p class="p1"><a href="{{$website->site}}/book/{{$v->id}}">{{$v->title}}</a></p></li>
+			@endif
+
+			@if ($k==9)<div class="clear"></div></ul>@endif
+
+			@endforeach
 		</div>
 		@endforeach
 	</div>

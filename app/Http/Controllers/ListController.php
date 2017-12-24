@@ -36,16 +36,22 @@ class ListController extends Controller
             return self::error('错误入口');
         }
 
+        //分类名称
+        $category = FictionsCategory::getCategory(['id'=>$category_id]);
+
+
         $fictions = Fictions::where('category_id', '=', $category_id)->paginate(6);
 
         $data = [
             'website'=>self::$website,
-            'user'=>[],
+            'user'=>self::$user,
+            'category'=>$category,
             'category_id'=>$category_id,
             'fictions'=>$fictions,
         ];
 
-        return view('dome1.list', $data);
+        return view(self::$website->template.'.list', $data);
+
     }
 
     //排行
@@ -69,11 +75,11 @@ class ListController extends Controller
 
         $data = [
             'website'=>self::$website,
-            'user'=>[],
+            'user'=>self::$user,
             'fictions'=>$fictions,
         ];
 
-        return view('dome1.ranking', $data);
+        return view(self::$website->template.'.ranking', $data);
     }
 
     //搜索
@@ -90,18 +96,19 @@ class ListController extends Controller
         
         $data = [
             'website'=>self::$website,
-            'user'=>[],
+            'user'=>self::$user,
             'word'=>$word,
             'fictions'=>$fictions,
         ];
 
-        return view('dome1.search', $data);
+        return view(self::$website->template.'.search', $data);
     }
 
     //作者作品
     public function getAuthor(Request $request)
     {
-        $word = trim($request->input('word'));
+
+        $word = urldecode($request->input('word'));
         
         if(empty($word))
         {
@@ -112,11 +119,11 @@ class ListController extends Controller
 
         $data = [
             'website'=>self::$website,
-            'user'=>[],
+            'user'=>self::$user,
             'word'=>$word,
             'fictions'=>$fictions,
         ];
 
-        return view('dome1.author', $data);
+        return view(self::$website->template.'.author', $data);
     }
 }

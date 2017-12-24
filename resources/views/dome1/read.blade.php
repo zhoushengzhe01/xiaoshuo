@@ -17,7 +17,7 @@
 	
 	<div class="main_content">
 		<div class="nr_input">
-			<p class="nrset"><a href="#">加入书架</a></p>
+			<p class="nrset"><a href="{{$website->site}}/collect/add?catalog_id={{$catalog->id}}">加入书签</a></p>
 			<p class="nrset"><a href="#">设置背景</a></p>
 			@if ($upper_catalog)
 			<p class="nrset"><a href="{{$website->site}}/book/{{$catalog->fiction_id}}/{{$upper_catalog->id}}">上一章</a></p>

@@ -13,7 +13,7 @@
 
 <div class="main">
 	@include('dome1.header')
-
+	
 	<!--详情-->
 	<div class="catalog">
 		<div class="catalog1">
@@ -25,8 +25,8 @@
 				<p class="jj">{{$fiction->intro}}</p>
 				<div class="cataloglink">
 					<p><a href="#begin">立即阅读</a></p>
-					<p><a href="javascript:addbookcase(1,0)">加入书架</a></p>
-                    <p><a href="javascript:vote(1)">推荐本书</a></p>
+					<p><a href="{{$website->site}}/collect/add?fiction_id={{$fiction->id}}">加入书架</a></p>
+                    <p><a href="{{$website->site}}/recommend/{{$fiction->id}}">推荐本书</a></p>
 					<p><a href="#">下载TXT</a></p>
 					<div class="clear"></div>
 				</div>

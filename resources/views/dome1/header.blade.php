@@ -9,7 +9,7 @@
 				@endif
 			</div>
         </div>
-		<div class="logo"><a href="{{$website->site}}"><img src="{{$website->public}}/images/logo.png" alt="###" /></a></div>
+		<div class="logo"><a href="{{$website->site}}"><img src="{{$website->public}}/images/logo.png" alt="{{$website->title}}" /></a></div>
 		<div class="search">
 			<form action="{{$website->site}}/search" method="get">
 				<input id="text1" type="text" name="word"/>
@@ -17,7 +17,7 @@
 			</form>
 		</div>
 		<div class="dl_sj">
-			<p class="sj"><i></i><a href="bookcase.html">书架</a></p>
+			<p class="sj"><i></i><a href="{{$website->site}}/collect">书架</a></p>
 			<div class="clear"></div>
 		</div>
 	</div>

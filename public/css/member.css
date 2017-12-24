@@ -1,0 +1,114 @@
+.mt_member *{
+  box-sizing:border-box;  
+  -moz-box-sizing:border-box; /* Firefox */  
+  -webkit-box-sizing:border-box; /* Safari */ 
+}
+.mt_member{
+  width: 100%;
+  overflow: hidden;
+}
+.mt_member .mt_left{
+  width: 20%;
+  float: left;
+}
+.mt_member .mt_left .mt_left_min{
+  margin: 20px 15px;
+}
+.mt_member .mt_left .mt_left_min ul{
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.mt_member .mt_left .mt_left_min .mt_title{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  background: #ccc;
+  text-align: center;
+  color: #fff;
+}
+.mt_member .mt_left .mt_left_min li{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  background: #fff;
+  text-align: center;
+}
+.mt_member .mt_left .mt_left_min li a{
+  color: #666;
+}
+.mt_member .mt_right{
+  width: 80%;
+  float: left;
+}
+.mt_member .mt_right .mt_right_min{
+  margin: 20px 15px;
+  font-size: 13px;
+}
+.mt_member .mt_right .mt_right_min .right_content{
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+} 
+.mt_member .mt_right .mt_right_min .right_content .mt_title{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  background: #ccc;
+  text-align: center;
+  color: #fff;
+}
+.mt_member .mt_right .mt_right_min .right_content .mt_body{
+  min-height: 400px;
+}
+.mt_member .mt_right .mt_right_min .right_content .mt_bottom{
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  font-size: 13px;
+  border-top: 1px solid #ccc;
+  text-align: right;
+  padding-right: 20px;
+}
+.mt_member .mt_but{
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.mt_member .mt_right .right_content table{
+  width: 100.4%;
+  margin: -1px;
+  color: #666;
+}
+.mt_member .mt_right .right_content table tr{
+  background: #fff;
+}
+.mt_member .mt_right .right_content table td{
+  padding: 0px 10px;
+  height: 30px;
+  text-align: center;
+}
+.mt_member .mt_right .right_content table th{
+  padding: 0px 10px;
+  height: 34px;
+}
+.mt_member .mt_right .right_content table .mt_tl{
+  text-align: left;
+}
+.mt_member .mt_right .right_content table .mt_tr{
+  text-align: right;
+}
+.mt_member .mt_right .right_content table .mt_tc{
+  text-align: center;
+}
+.mt_member .mt_right .right_content table input{
+  height: 22px;
+}

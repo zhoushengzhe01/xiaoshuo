@@ -28,8 +28,6 @@ class UserController extends Controller
     {
         parent::__construct();
 
-        //验证用户
-        
     }
     
     //我的资料
@@ -44,9 +42,10 @@ class UserController extends Controller
         $data = [
             'website'=>self::$website,
             'user'=>self::$user,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.userinfo', $data);
+        return view('member.userinfo', $data);
     }
 
     //修改我的资料
@@ -61,9 +60,10 @@ class UserController extends Controller
         $data = [
             'website'=>self::$website,
             'user'=>self::$user,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.useredit', $data);
+        return view('member.useredit', $data);
     }
 
     //提交修改资料
@@ -126,9 +126,10 @@ class UserController extends Controller
         $data = [
             'website'=>self::$website,
             'user'=>self::$user,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.sethead', $data);
+        return view('member.sethead', $data);
     }
 
     //提交修改头像
@@ -191,9 +192,10 @@ class UserController extends Controller
         $data = [
             'website'=>self::$website,
             'user'=>self::$user,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.passedit', $data);
+        return view('member.passedit', $data);
     }
 
     //提交修改密码

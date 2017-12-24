@@ -41,7 +41,7 @@
 		</tr>
 		<tr align="center"> 
 			<td class="foot">
-				<a href="register.html">新用户注册</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="{{$website->site}}/register">新用户注册</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="getpass.html">取回密码</a> 
 			</td>
 		</tr>

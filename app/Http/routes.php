@@ -19,6 +19,10 @@ Route::get('ranking/{type}', 'ListController@getRanking');
 Route::get('search', 'ListController@getSearch');
 Route::get('author', 'ListController@getAuthor');
 
+//浏览
+Route::get('history', 'HistoryController@getHistorys');
+Route::get('history/del/{history_id}', 'HistoryController@delHistorys');
+
 //登陆注册
 Route::get('logout', 'AuthController@getLogout');
 Route::get('login', 'AuthController@getLogin');
@@ -29,6 +33,9 @@ Route::post('register', 'AuthController@postRegister');
 //收藏
 Route::get('collect', 'Member\CollectController@getCollects');
 Route::any('collect/{action}', 'Member\CollectController@actionCollect');
+
+//推荐
+Route::get('recommend/{fictions_id}', 'Member\RecommendController@getRecommend');
 
 //会员资料
 Route::get('userinfo', 'Member\UserController@getUserinfo');

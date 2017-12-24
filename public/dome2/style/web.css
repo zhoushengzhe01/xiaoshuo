@@ -1,0 +1,247 @@
+*{padding:0px;margin:0px; list-style-type:none;}
+body{font-size:12px; font-family: 方正启体简体, "Microsoft YaHei", 微软雅黑, 宋体; background:#91C691}
+h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal}
+img{border:0}
+strong{font-weight:normal;}
+a{color:#333; text-decoration:none;}
+a:hover{color:#466D40}
+.clearfix{clear:both;}
+.w{width:1030px;margin:0 auto; background:#fff}
+.main{ overflow:hidden}
+.header{overflow:hidden;margin-top:5px;}
+.header .top{position:relative;height:30px; line-height:30px;border-bottom:1px solid #e6eee1;background:#F7FAF5;color:#999}
+.header .top a{color:#999}
+.header .top .p1{position:absolute;top:0px;left:15px;}
+.header .top .p2{position:absolute;top:0px;right:20px;}
+.header .banner{position:relative;height:100px;}
+.header .banner .logo{position:absolute;left:10px;top:10px;width:300px;height:75px;}
+.header .banner .s{position:absolute;right:10px;top:30px;width:350px;height:44px; line-height:44px;background:url('./../images/sousuotiao.png')}
+.header .banner .searchkey{position:absolute;left:40px;top:7px;width:220px;height:30px;border-radius:3px;}
+.header .banner .searchkey input{height:30px;width:210px;border:0;border-radius:3px;padding:0px 5px;}
+.header .banner .searchsubmit{position:absolute;right:40px;top:7px;width:36px;height:30px;}
+.header .banner .searchsubmit input{ background:url('./../images/sousuo.png') no-repeat;height:30px;width:36px;border:0;cursor:pointer}
+.header .menu{position:relative;}
+.header .menu li{float:left; background:url('./../images/daohangtuxing-2.png') no-repeat;height:70px; line-height:85px;width:126px;text-align:right;font-size:16px;}
+.header .menu li a{padding-right:30px;color:#466D40}
+.header .menu a:hover,.header .menu .curr a{color:red}
+.header .menu .home{width:100px; background:url('./../images/daohangtuxing-home2.png') no-repeat;}
+.header .menu .home a{color:#fff;padding-right:50px;}
+.header #m1{position:absolute;top:0px;left:60px;}
+.header #m2{position:absolute;top:0px;left:156px;}
+.header #m3{position:absolute;top:0px;left:251px;}
+.header #m4{position:absolute;top:0px;left:346px;}
+.header #m5{position:absolute;top:0px;left:440px;}
+.header #m6{position:absolute;top:0px;left:536px;}
+.header #m7{position:absolute;top:0px;left:631px;}
+.header #m8{position:absolute;top:0px;left:727px;}
+.header #m9{position:absolute;top:0px;left:822px;}
+.header #m10{position:absolute;top:0px;left:909px;background:url('./../images/daohangtuxing-4.png') no-repeat;}
+.header #m10 a{padding-right:20px;}
+.block1 ul{margin:0px 15px;padding-top:25px;}
+.block1 li{float:left;width:125px; text-align:center;margin-bottom:15px;}
+.block1 li img{border:2px solid #eee;padding:2px;}
+.block1 li h2{height:40px; line-height:40px; overflow:hidden; text-align:center}
+.block2{ background:#F8FAF5;height:480px;padding-top:20px;}
+.block2 .top{position:relative;background:url('./../images/daohangxiantiao.png') no-repeat bottom;margin:10px 20px 0px 20px;}
+.block2 .top h1{font-size:24px;}
+.block2 .top h1 a{color:#75A275}
+.block2 .top .more{position:absolute;top:0px;right:0px;width:30px;height:30px;background:url('./../images/jiantou.png') no-repeat;}
+.block2 .l{float:left;width:200px;margin-left:20px;margin-top:30px;height:380px;background:url('./../images/paihangbang.png') no-repeat;}
+.block2 .l ul{margin:30px 10px 0px 10px;}
+.block2 .l li{position:relative;height:30px; line-height:30px; overflow:hidden;padding-left:20px;}
+.block2 .l i{position:absolute;left:0px;top:6px;background:#B3B3B3;width:15px;height:15px; line-height:15px; text-align:center;border-radius:3px;color:#fff; font-style:normal}
+.block2 .l .i1{background:#F4699C}
+.block2 .l .i2{background:#C8A0E6}
+.block2 .l .i3{background:#96B4FC}
+.block2 .l span{position:absolute;top:0px;right:0px;color:#999}
+.block2 .r{float:right;width:750px;margin-right:20px;margin-top:30px;}
+.block2 .r ul{margin-top:0px;}
+.block2 .r li{float:left;width:120px;margin-left:4px;margin-bottom:10px;}
+.block2 .r li img{padding:2px;border:1px solid #ddd; background:#ddd}
+.block2 .r .ph2{background:#fff;padding:10px 10px 0px 10px;border:1px solid #eee;height:150px;}
+.block2 .r .ph2 li{width:116px;height:20px; line-height:20px; overflow:hidden}
+.block2 .r .ph2 a{color:#999}
+.block2 .r h2{ text-align:center;height:30px; line-height:30px;}
+.block3 .sortone{float:left;width:220px;height:400px; overflow:hidden;margin-left:20px;margin-right:14px;margin-top:15px;}
+.block3 li{position:relative;height:30px; line-height:30px; overflow:hidden;border-bottom:1px dashed #ddd;}
+.block3 .author{position:absolute;top:0px;right:0px;color:#999}
+.block3 .sortone .top{position:relative;height:30px; background:url('./../images/daohangxiantiao-huangse.png') no-repeat bottom;}
+.block3 .sortone .top .more{position:absolute;top:5px;right:0px;}
+.block3 .sortone h1{font-size:20px;}
+.block3 .sortone h1 a{color:#75A275;}
+.block3 .sortone ul{margin-top:20px;}
+.block3 .first{height:120px;border-bottom:1px solid #ddd}
+.block3 .first .l{float:left;width:74px;border:1px solid #ddd;padding:2px;}
+.block3 .first .r{float:right;width:130px;}
+.block3 .first .r .p1{font-size:16px;height:16px; line-height:16px; overflow:hidden;}
+.block3 .first .r .p2{height:30px; line-height:36px; overflow:hidden;}
+.block3 .first .r .p3{height:60px; line-height:20px; overflow:hidden;color:#999}
+.block3 .first .p2 span{padding:1px 3px;border-radius:5px;}
+.block3 .first .p2 .sort0{background:#F6EB6F;color:#F19F09}
+.block3 .first .p2 .author0{ background:#CEEA93;color:#92B06F}
+.block4{margin:20px;margin-bottom:0px;}
+.block4 .l{float:left;width:200px;overflow:hidden}
+.block4 .l .top{position:relative;height:30px; background:url('./../images/daohangxiantiao-huangse2.png') no-repeat bottom;}
+.block4 .l .top .more{position:absolute;top:5px;right:0px;}
+.block4 .l .top h1{font-size:20px;}
+.block4 .l .top h1 a{color:#75A275;}
+.block4 .l ul{margin-top:20px;margin-bottom:20px;}
+.block4 .l li{position:relative;height:25px; line-height:25px; overflow:hidden;border-bottom:1px dashed #ddd;}
+.block4 .l li span{position:absolute;top:0px;right:0px;color:#999}
+.block4 .r{float:right;width:740px;}
+.block4 .r ul{margin-top:20px;}
+.block4 .r .top{position:relative;height:30px; background:url('./../images/daohangxiantiao-huangse3.png') no-repeat bottom;}
+.block4 .r .top .more{position:absolute;top:5px;right:0px;}
+.block4 .r .top h1{font-size:20px;}
+.block4 .r .top h1 a{color:#75A275;}
+.lists li{height:30px; line-height:30px;overflow:hidden;}
+.lists .d1{float:left;width:390px;height:30;overflow:hidden;}
+.lists .d2{position:relative;float:right;width:340px;height:30;overflow:hidden;}
+.lists .sortname{color:#999}
+.lists .lastchapter{color:#999}
+.lists .lastchapter a{color:#999}
+.lists .lastupdate{position:absolute;top:0px;right:0px;margin-right:30px;color:#999;}
+#dialog { position: absolute; top: 0px; left: 0px; border: 5px solid #489948; background: #f1f5fa; font-size: 12px; line-height: 120%; padding: 20px 10px 10px 10px; visibility: hidden;border-radius:5px;}
+#dialogx{}
+#dialogx a{background:#489948;padding:3px 5px;color:#fff}
+.topmenu{margin-left:20px;font-size:18px;color:#75A275;background:url('./../images/daohangxiantiao-huangse4.png') no-repeat left bottom;height:30px;padding-left:10px;}
+.topmenu a{color:#75A275;}
+.topmenu .jiantou{padding:0px 20px;vertical-align:middle;}
+.articlelist .l{float:left;width:170px;height:500px;margin:20px 0px 0px 30px; background:url('./../images/daohanglan.png') no-repeat;}
+.articlelist .l ul{margin:50px 15px 0px 15px;}
+.articlelist .l li{ background:#F8FAF5;margin-bottom:15px;height:30px; line-height:30px; text-align:center;font-size:16px;color:#75A275}
+.articlelist .l .sclick{ background:#489948}
+.articlelist .l .sclick a{color:#fff}
+.articlelist .l a{color:#75A275;display:block;}
+.articlelist .r{float:right;width:750px;margin:20px 20px 0px 0px;}
+.articlelist .r li{float:left;width:360px;height:160px;margin-left:10px;margin-bottom:10px;border-bottom:1px solid #ddd}
+.articlelist .r .l2{float:left;width:100px;}
+.articlelist .l2 img{border:1px solid #ddd;padding:2px;}
+.articlelist .r .r2{float:right;width:250px;}
+.articlelist .r .articlename{font-size:16px;}
+.articlelist .r .articlename a{color:#489948}
+.articlelist .r .articlename span{font-size:12px;padding:1px 2px; background:#91C691;color:#fff;border-radius:50%;}
+.articlelist .r .articlename .f{ background:red}
+.articlelist .r .p2{height:30px; line-height:30px;color:#999; overflow:hidden}
+.articlelist .r .p3{height:60px; overflow:hidden; line-height:20px;color:#999;text-indent:2em;}
+.articlelist .r .p4{height:40px; line-height:40px;}
+.articlelist .r .p4 a{padding:5px 10px; background:#91C691;color:#F8FAF5;margin-right:3px;border-radius:3px;box-shadow: 1px 1px 3px 1px #489948;}
+.pagination{text-align: center;margin:20px 0px}
+.pagination li{display: initial; width: initial !important; height: initial !important; float: initial !important; margin: 0px !important;}
+.pagination .disabled{width: auto;}
+.pagination li a{padding: 6px 14px; background: #489948; color: #FFF; margin: 0px 2px; border-radius: 3px;}
+.pagination li span{padding: 6px 14px; background: #91C691; color: #FFF; margin: 0px 2px; border-radius: 3px;}
+
+.pages{text-align:center;height:25px; line-height:25px;}
+.pages a,.pages strong,.pages span{padding:5px 9px; background:#91C691;margin:2px;color:#fff;border-radius:3px;}
+.pages strong,.pages .prev,.pages .next{ background:#489948}
+
+.toplist .l{float:left;width:170px;height:500px;margin:20px 0px 0px 30px; background:url('./../images/daohanglan.png') no-repeat;}
+.toplist .l ul{margin:50px 15px 0px 15px;}
+.toplist .l li{ background:#F8FAF5;margin-bottom:15px;height:30px; line-height:30px; text-align:center;font-size:16px;color:#75A275}
+.toplist .l .sclick{ background:#489948}
+.toplist .l .sclick a{color:#fff}
+.toplist .l a{color:#75A275;display:block;}
+.toplistmenu{margin-top:20px;}
+.toplist .toplistl ul{margin-top:30px;}
+.toplist .toplistl li{height:25px; line-height:25px;margin-bottom:10px;font-size:14px;}
+.toplist .r{float:right;width:750px;margin:20px 20px 0px 0px;}
+.toplist .r ul{margin-bottom:20px;}
+.searchresult{margin:20px 50px 20px 50px;border:1px solid #ddd;padding:20px;border-radius:3px;}
+.searchmenu{margin-top:20px;}
+.searchtop{margin-bottom:20px;text-align:center;font-size:16px;color:#75A275}
+.searchbox{margin:30px auto;}
+.searchbox .one{position:relative;height:60px; line-height:60px;width:400px;margin-left:250px;}
+.searchbox .one .s1{position:absolute;left:0px;width:100px; display:block; text-align:right;}
+.searchbox .one .s2{position:absolute;left:100px;width:300px; display:block; text-align:left;}
+.searchbox .one .s3{background:#fff;width:250px;height:30px;height:30px\9; line-height:30px;border:0px;border:1px solid #ddd;margin-top:12px;border-radius:3px;}
+.searchbox .one .s4{background:#75A275;border:0px;width:100px;height:30px; line-height:30px; line-height:30px\9;color:#fff;font-size:16px;font-weight:bold;border-radius:2px;cursor:pointer}
+.jilu{border-radius:5px;background:#fff;margin:30px;padding:10px 20px;border:1px solid #ddd;}
+.jilu li{float:left; height:45px; line-height:45px; overflow:hidden; border-bottom:1px dashed #ddd}
+.jilu li a{color:#489948}
+.jilu .s1{width:35%;}
+.jilu .s2{width:40%;}
+.jilu .s3{width:20%;}
+.jilu .s4{width:5%;}
+#banner .s3{color:#75A275}
+.jilu .tip{ text-align:center;width:100%;color:#75A275;font-size:14px;border:0}
+.jilu .t{font-size:14px;}
+.bookcase{ background:#fff;margin:10px 30px 50px 30px;padding:10px;border-radius:5px;}
+.bookcasemenu{margin-top:20px;}
+.bookcase .gridtop{height:40px; line-height:40px;border-bottom:1px solid #ddd;font-size:16px;color:#75A275}
+.bookcase .grid{height:40px; line-height:40px;}
+.bookcase .grid td{border-bottom:1px solid #eee}
+.bookcase select{ background:#fff;height:30px; line-height:30px;border:1px solid #ccc;border-radius:5px;cursor:pointer}
+.bookcase input[type=submit]{background:#75A275;border:0px;width:100px;height:30px; line-height:30px; line-height:30px\9;color:#fff;font-size:14px;border-radius:2px;cursor:pointer}
+.nrbar{position:relative;height:50px; line-height:50px; background:#fff;margin-top:20px;width:980px;padding:0px 10px;border-left:3px solid #75A275;font-size:14px;box-shadow: 0px -1px 3px 1px #ddd;}
+.nrbar .s{font-family:sans-serif;}
+.u{background:#fff;margin:10px 30px;border-radius:5px;}
+.u .l{float:left;width:180px;margin:10px;margin-right:20px;}
+.u .r{float:left;width:750px;margin-top:10px;margin-bottom:20px;}
+.u .t{border-bottom:1px solid #ddd;height:40px;line-height:40px;font-size:16px;font-weight:bold;color:#666}
+.u table{width:100%;}
+.u td{border-bottom:1px solid #f1f1f1;padding:10px 0px;}
+.uleft{line-height:40px;font-size:16px; text-align:center}
+.uleft li a{display:block;border-bottom:1px solid #ddd; background:#eee}
+.uleft li a:hover{ background:#ddd}
+.uleft .curr{ background:#75A275;color:#fff;}
+.jump{border:1px solid #ddd;width:500px;margin:0 auto;margin-top:200px;border-radius:5px; background:#fff;padding:20px;box-shadow:0px 0px 2px 1px #489948;font-size:14px;}
+.jump a{color:#46A1DF}
+.jump .blocktitle{font-size:16px;}
+.login{margin:30px 30px;font-size:16px;color:#999;border:1px solid #ddd;border-radius:5px;}
+.loginmenu{margin-top:20px;}
+.login .lform{padding:50px;}
+.lform .one{position:relative;height:60px; line-height:60px;width:400px;margin-left:220px;}
+.lform .one .s1{position:absolute;left:0px;width:100px; display:block; text-align:right;}
+.lform .one .s2{position:absolute;left:100px;width:300px; display:block; text-align:left;}
+.lform .one .s3{background:#fff;width:250px;height:30px;height:30px\9; line-height:30px;border:0px;border:1px solid #ddd;margin-top:12px;border-radius:3px;}
+.lform .one .s4{background:#75A275;border:0px;width:100px;height:30px; line-height:30px; line-height:30px\9;color:#fff;font-size:16px;font-weight:bold;border-radius:2px;cursor:pointer}
+.register .one .s2{width:500px;}
+
+.chaptermenu{position:relative;margin-top:30px; background:url('./../images/daohangxiantiao2.png') no-repeat bottom left;}
+.articleinfo{margin:30px 30px;}
+.articleinfo .l{float:left;width:170px;}
+.articleinfo .l img{padding:2px;border:2px solid #ddd}
+.articleinfo .r{position:relative;float:right;width:780px;}
+.articleinfo .l2{width:450px;}
+.articleinfo .r2{position:absolute;right:0px;top:0px;width:300px;height:250px; line-height:250px;font-size:30px;border:1px solid #fff; text-align:center;color:#75A275;border:2px solid #91C691}
+.articleinfo .p1{height:20px; line-height:20px;}
+.articleinfo .p1 h1{font-size:20px;color:#37B645;display:inline}
+.articleinfo .p1 .author{font-size:12px;margin-left:20px;color:#999}
+.articleinfo .p2{height:30px; line-height:30px;margin:20px 0px;}
+.articleinfo .p2 p{float:left;background:#91C691;padding:0px 10px;margin-right:10px;color:#fff;text-align:center;border-radius:3px;box-shadow: 1px 1px 3px 1px #489948;}
+.articleinfo .p2 a{color:#fff}
+.articleinfo .p3{min-height:100px; line-height:20px;font-size:14px;color:#666;text-indent:2em;overflow:hidden}
+.articleinfo .p4{height:20px; line-height:20px;font-size:16px;color:#666;margin-top:10px;}
+.articleinfo .p4 a{color:#37B645}
+.authorarticle{margin:20px; text-align:left;line-height:30px;}
+.authorarticle tr{font-size:14px;font-weight:normal;}
+.chapterlist{margin:0px 30px;padding-top:20px;}
+.chapterlist .top{position:relative;background:url('./../images/daohangxiantiao.png') no-repeat bottom left;font-size:18px;color:#37B645;height:30px;}
+.chapterlist .top .gobottom{position:absolute;top:0px;right:30px;}
+.chapterlist .top .gobottom a{color:#999}
+.chapterlist ul{margin:0px 10px;}
+.chapterlist li{float:left;width:315px;height:40px; line-height:40px;font-size:14px; overflow:hidden;border-bottom:1px solid #eee}
+.chapterlist li a:hover{color:#999}
+.chapterlist li a:visited{color:#999}
+.chapterlist .volume{color:#37B645;width:100%;}
+.chapterlist .gotop{ text-align:center;font-size:18px; overflow:hidden;height:30px; line-height:30px;margin-top:20px;}
+.chapterlist .gotop a{color:#999}
+.articlevote{ text-align:center;font-size:14px;}
+.articlevote a{color:#999}
+.chapter h1{font-size:22px; text-align:center;color:#37B645;margin-top:30px;}
+.chapter .content{font-size:16px;padding:20px; line-height:200%}
+.chapter .chapterpage{width:625px;margin:0 auto;margin-top:20px;}
+.chapter .chapterpage li{float:left;width:115px;height:32px; line-height:32px; text-align:center; background:url('./../images/chakangengduo.png') no-repeat;margin-right:10px;}
+.chapter .chapterpage li a{display:block;color:green}
+.chapter .chapterset{position:absolute;top:0px;right:0px;height:20px; line-height:20px; text-align:center;margin-right:10px;}
+.chapter .chapterset select{margin:0px 5px;border-color:#ddd;color:#999}
+.T_s{width:900px;margin:0 auto; text-align:center;margin-top:8px;}
+.T_s4,.T_s5{margin:8px 0px; text-align:center}
+.indexfoot{line-height:30px; text-align:left;overflow:hidden;}
+.indexfoot .p1{background:#75A375;color:#fff;padding-left:20px;margin:0 20px;margin-top:20px;border-radius:3px 3px 0px 0px ;}
+.indexfoot .p2{padding-left:20px;border:1px solid #ccc;border-top:0;margin:0 20px;border-radius:0px 0px 3px 3px;}
+.indexfoot .p2 a{padding:0px 10px;}
+.footer{height:100px; text-align:center;padding:20px 0px;margin-bottom:20px;}
+.footer .p1{border-top:1px solid #ddd;padding-top:10px;}
+.footer p{margin:0px 20px; line-height:20px;}

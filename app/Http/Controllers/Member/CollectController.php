@@ -23,24 +23,14 @@ use Hash;
 
 class CollectController extends Controller
 {
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        //验证用户
-        
-    }
     //我的收藏
     public function getCollects(Request $request)
     {
         //登录
-        if(self::verifyUser()!==true)
-        {
+        if(self::verifyUser()!==true){
             return self::info('你还没有登陆，请登陆', '/login');
         }
-
-
+        
         $fictions = Fictions::where(['fictions_collect.user_id'=>self::$user->id] )
             ->leftJoin('fictions_collect', 'fictions.id', '=', 'fictions_collect.fiction_id')
             ->select('fictions.*', 'fictions_collect.catalog_id', 'fictions_collect.catalog_title', 'fictions_collect.id as collect_id');
@@ -54,18 +44,17 @@ class CollectController extends Controller
             'user'=>self::$user,
             'fictions'=>$fictions,
             'count'=>$count,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.collect', $data);
+        return view('member.collect', $data);
     }
     //收藏操作
     public function actionCollect(Request $request, $action)
     {   
         //登录
         if(self::verifyUser()!==true)
-        {
             return self::info('你还没有登陆，请登陆', '/login');
-        }
 
         //接收数据
         if($action=='add')
@@ -201,7 +190,7 @@ class CollectController extends Controller
 
                 if($result)
                 {
-                    return self::success('删除成功');
+                    return self::success('删除成功','/collect');
                 }
                 else
                 {
@@ -213,6 +202,5 @@ class CollectController extends Controller
         {
             return self::error('错误入口');
         }
-    }
-    
+    }    
 }

@@ -22,6 +22,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
+        
         self::init();
     }
 
@@ -43,7 +44,7 @@ class Controller extends BaseController
         
         self::$website->domain = $domain->name;
         self::$website->site = 'http://'.$domain->name;
-        self::$website->public = self::$website->site.'/dome01';
+        self::$website->public = self::$website->site.'/'.self::$website->template;
     }
 
     //验证用户

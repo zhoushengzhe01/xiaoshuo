@@ -28,14 +28,14 @@
 					<tr>
 						<td width="30%" align="right" valign="middle">用户名称：</td>
 						<td width="70%">
-						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="username" onKeyPress="javascript: if (event.keyCode==32) return false;" >
+						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="username">
 						（必填）
 						</td>
 					</tr>
 					<tr>
 						<td width="30%" align="right" valign="middle">真实名称：</td>
 						<td width="70%">
-						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="nickname" onKeyPress="javascript: if (event.keyCode==32) return false;" >
+						<input type="text" class="text" size="20" maxlength="30" style="width:150px" name="nickname">
 						（可选）
 						</td>
 					</tr>

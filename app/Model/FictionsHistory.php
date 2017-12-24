@@ -1,8 +1,9 @@
 <?php
-
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Fictions;
+use App\Model\FictionsCatalog;
 
 class FictionsHistory extends Model
 {
@@ -66,12 +67,45 @@ class FictionsHistory extends Model
     }
 
     //添加
-    public static function postHistory($data)
+    public static function postHistory($catalog_id, $uv)
     {
-        if(empty($data) || count($data)<1 )
+        if(empty($catalog_id))
             return false;
+        
+        $catalog = FictionsCatalog::getCatalog(['id'=>$catalog_id]);
+        if(empty($catalog))
+        {
+            return false;
+        }
+       
+        $fiction = Fictions::getFiction(['id'=>$catalog->fiction_id]);
+        if(empty($fiction))
+        {
+            return false;
+        }
+        else
+        {
+            $fiction->all_click = $fiction->all_click + 1;
+            $fiction->year_click = $fiction->year_click + 1;
+            $fiction->month_click = $fiction->month_click + 1;
+            $fiction->week_click = $fiction->week_click + 1;
+            $fiction->save();
+        }
 
-        $history = new self;
+        $data = [
+            'uv'=>$uv,
+            'fiction_id'=>$fiction->id,
+            'fiction_title'=>$fiction->title,
+            'catalog_id'=>$catalog->id,
+            'catalog_title'=>$catalog->title,
+        ];
+
+        
+        $history = self::getHistory(['fiction_id'=>$catalog->fiction_id]);
+        if(empty($history))
+        {
+            $history = new self;
+        }
 
         foreach($data as $k=>$v)
         {
@@ -126,4 +160,5 @@ class FictionsHistory extends Model
             return true;
         }
     }
+
 }

@@ -24,6 +24,7 @@ class MessageController extends Controller
     //收件箱
     public function getMessages(Request $request, $type)
     {
+       
         //登录
         if(self::verifyUser()!==true)
         {
@@ -32,6 +33,7 @@ class MessageController extends Controller
 
         if($type=='in')
         {
+            
             $message = UsersMessage::where('in_uid', '=', self::$user->id);
 
             $count = $message->count();
@@ -52,9 +54,10 @@ class MessageController extends Controller
             'message'=>$message,
             'count'=>$count,
             'type'=>$type,
+            'template'=>self::$website->template,
         ];
-
-        return view('dome1.member.messages', $data);
+        
+        return view('member.messages', $data);
     }
 
     //查看邮箱
@@ -77,9 +80,10 @@ class MessageController extends Controller
             'website'=>self::$website,
             'user'=>self::$user,
             'message'=>$message,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.message', $data);
+        return view('member.message', $data);
     }
 
     //删除邮箱
@@ -121,9 +125,10 @@ class MessageController extends Controller
         $data = [
             'website'=>self::$website,
             'user'=>self::$user,
+            'template'=>self::$website->template,
         ];
 
-        return view('dome1.member.sendmessage', $data);
+        return view('member.sendmessage', $data);
     }
 
     //发送邮件提交

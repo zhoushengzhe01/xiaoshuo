@@ -21,10 +21,19 @@ use Hash;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        self::verifyUser();
+    }
     //推出登陆
     public function getLogout(Request $request)
     {
-        die("推出登陆");
+        $request->session()->put('userid', '');
+        $request->session()->put('username', '');
+
+        return self::success('退出成功', '/');
     }
     
     //登陆
@@ -32,10 +41,10 @@ class AuthController extends Controller
     {
         $data = [
             'website'=>self::$website,
-            'user'=>[],
+            'user'=>self::$user,
         ];
         
-        return view('dome1.login', $data);
+        return view(self::$website->template.'.login', $data);
     }
 
     //登陆验证
@@ -66,7 +75,7 @@ class AuthController extends Controller
         $request->session()->put('userid', $user->id);
         $request->session()->put('username', $user->username);
 
-        return self::success('登陆成功', '/login');
+        return self::success('登陆成功', '/userinfo');
     }
 
     //注册
@@ -74,10 +83,10 @@ class AuthController extends Controller
     {
         $data = [
             'website'=>self::$website,
-            'user'=>[],
+            'user'=>self::$user,
         ];
         
-        return view('dome1.register', $data);
+        return view(self::$website->template.'.register', $data);
         
     }
 
