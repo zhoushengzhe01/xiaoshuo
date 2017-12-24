@@ -1,12 +1,14 @@
-<!--底部信息-->
-<div class="footer w">
-    <p class="p1">本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
-    <p>Copyright &copy; 2017 <a href="http://www.17mb.com" target="_blank">17模板网</a> All Rights Reserved.</p>
-    <p><script>__17mb_beian();__17mb_tj();__17mb_dl();</script></p>    
+<div class="foot">
+    <ul>
+        <li><mip-link href="{{$website->site}}">17模板网</mip-link></li>
+        <li><mip-link href="{{$website->site}}/s.php">找小说</mip-link></li>
+        <li><mip-link href="{{$website->site}}/mybook.php">我的书架</mip-link></li>
+    </ul>
+    <div class="clear"></div>
 </div>
 
-<script type="text/javascript" charset="gbk">
-$(function() {
-    $("img.lazy").lazyload({effect: "fadeIn",placeholder : "http://b3.ku180.com/17mb/images/loading.gif"});
-});
-</script>
+<mip-fixed type="gototop"><mip-gototop threshold='100'></mip-gototop></mip-fixed>
+<script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+<script src="https://mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
+<script src="https://mipcache.bdstatic.com/static/v1/mip-gototop/mip-gototop.js"></script>
+<script src="https://mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>

@@ -32,20 +32,8 @@ body,ul,li,p,span,h1,h2,h3,h4,h5,h6.dl,dt,dd{margin:0px;padding:0px;font-size:12
     @endforeach
     {!! $fictions->links() !!}
 
-<div class="foot">
-    	<ul>
-        	<li><mip-link href="http://m3.ku180.com">17模板网</mip-link></li>
-        	<li><mip-link href="http://m3.ku180.com/s.php">找小说</mip-link></li>
-        	<li><mip-link href="http://m3.ku180.com/mybook.php">我的书架</mip-link></li>
-        </ul>
-        <div class="clear"></div>
-    </div>
     
-<mip-fixed type="gototop"><mip-gototop threshold='100'></mip-gototop></mip-fixed>
-<script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-gototop/mip-gototop.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>
+    @include('m_dome2.footer')
 </body>
 </html>
 

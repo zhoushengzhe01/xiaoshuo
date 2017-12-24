@@ -42,17 +42,6 @@ body,ul,li,p,span,h1,h2,h3,h4,h5,h6.dl,dt,dd{margin:0px;padding:0px;font-size:12
 	</ul>
 	<div class="clear"></div>
 
-<div class="foot">
-    	<ul>
-        	<li><mip-link href="{{$website->site}}">17模板网</mip-link></li>
-        	<li><mip-link href="{{$website->site}}/s.php">找小说</mip-link></li>
-        	<li><mip-link href="{{$website->site}}/mybook.php">我的书架</mip-link></li>
-        </ul>
-        <div class="clear"></div>
-    </div>
-
-<script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>
+	@include('m_dome2.footer')
 </body>
 </html>

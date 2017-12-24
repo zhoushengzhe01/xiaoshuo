@@ -30,34 +30,22 @@ body,ul,li,p,span,h1,h2,h3,h4,h5,h6.dl,dt,dd{margin:0px;padding:0px;font-size:12
 		</ul>
 		<div class="clear"></div>
 	</div>
-		@foreach ($fictions as $key=>$val)
-		<ul class="topul">
-			<li>
-				<a href="{{$website->site}}/book/{{$val->id}}" title="{{$val->title}}" target="_blank" class="top_img"><mip-img src="{{$website->public}}/images/5s.jpg"></mip-img></a>
-				<h2><mip-link href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</mip-link></h2>
-				<p>{{$val->intro}}</p>
-				<span class="author">{{$val->author}}</span>
-				<span class="other">{{$val->updated_at}}</span>
-			</li>
-		</ul>
-		@endforeach
+	@foreach ($fictions as $key=>$val)
+	<ul class="topul">
+		<li>
+			<a href="{{$website->site}}/book/{{$val->id}}" title="{{$val->title}}" target="_blank" class="top_img"><mip-img src="{{$website->public}}/images/5s.jpg"></mip-img></a>
+			<h2><mip-link href="{{$website->site}}/book/{{$val->id}}">{{$val->title}}</mip-link></h2>
+			<p>{{$val->intro}}</p>
+			<span class="author">{{$val->author}}</span>
+			<span class="other">{{$val->updated_at}}</span>
+		</li>
+	</ul>
+	@endforeach
 
-		{!! $fictions->links() !!}
+	{!! $fictions->links() !!}
 
-		<div class="foot">
-    	<ul>
-        	<li><mip-link href="{{$website->site}}">17模板网</mip-link></li>
-        	<li><mip-link href="{{$website->site}}/s.php">找小说</mip-link></li>
-        	<li><mip-link href="{{$website->site}}/mybook.php">我的书架</mip-link></li>
-        </ul>
-        <div class="clear"></div>
-    </div>
-    
-<mip-fixed type="gototop"><mip-gototop threshold='100'></mip-gototop></mip-fixed>
-<script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-link/mip-link.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-gototop/mip-gototop.js"></script>
-<script src="https://mipcache.bdstatic.com/static/v1/mip-fixed/mip-fixed.js"></script>
+	@include('m_dome2.footer')
+	
 </body>
 </html>
 

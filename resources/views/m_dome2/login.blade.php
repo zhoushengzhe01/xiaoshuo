@@ -38,25 +38,8 @@
 		<div class="clear"></div>
 	</form>
 </div>
-<br/><br/><br/><br/><br/><br/>
-<div class="sbottom">
-<div class="foot">
-    	<ul>
-        	<li><a href="http://m3.ku180.com">17模板网</a></li>
-        	<li><a href="http://m3.ku180.com/s.php">找小说</a></li>
-        	<li><a href="http://m3.ku180.com/mybook.php">我的书架</a></li>
-        </ul>
-        <div class="clear"></div>
-    </div>
-</div>
 
-	<script>
-		function reloadcode(){
-		var verify=document.getElementById('showcode');
-		verify.setAttribute('src','/code.php?'+Math.random());
-		}
-    </script>
-
+@include('m_dome2.footer')
 </body>
 </html>
 
